@@ -1,0 +1,51 @@
+<div class="edit-asset">
+  <mat-dialog-content class="mat-typography">
+    <h3>Edit ATM: {{ formData.get('atmName')?.value }}</h3>
+    <form [formGroup]="formData" class="form-data">
+      <mat-form-field appearance="fill">
+        <mat-label>ATM Name</mat-label>
+        <input matInput formControlName="atmName" />
+        <mat-error *ngIf="isHasError('atmName')">
+          Please enter an ATM name
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Manufacturer</mat-label>
+        <input matInput formControlName="manufacturer" />
+        <mat-error *ngIf="isHasError('manufacturer')">
+          Please enter a Manufacturer
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Type</mat-label>
+        <input matInput formControlName="type" />
+        <mat-error *ngIf="isHasError('type')"> Please enter a Type </mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Serial Number</mat-label>
+        <input matInput formControlName="serialNumber" />
+        <mat-error *ngIf="isHasError('serialNumber')">
+          Please enter a Serial Number
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Image URL</mat-label>
+        <input matInput formControlName="image" />
+        <mat-error *ngIf="isHasError('image')">
+          Please enter an Image URL
+        </mat-error>
+      </mat-form-field>
+    </form>
+  </mat-dialog-content>
+  <mat-dialog-actions align="end">
+    <button mat-button mat-dialog-close>Cancel</button>
+    <button
+      mat-button
+      [mat-dialog-close]="onCloseDialog()"
+      cdkFocusInitial
+      [disabled]="formData.invalid || !formData.dirty"
+    >
+      Update
+    </button>
+  </mat-dialog-actions>
+</div>
