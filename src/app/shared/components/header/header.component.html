@@ -1,5 +1,20 @@
-<mat-toolbar color="primary" class="header">
-  <div class="container">
-    <span>ATM Management System</span>
-  </div>
-</mat-toolbar>
+<header class="header">
+  <nav class="nav-bar">
+    <div class="logo">TravelGuide</div>
+    <nav *ngFor="let item of menus" class="nav-links">
+      <a
+        class="{{ item.label }}"
+        *ngIf="item.isActive"
+        (click)="onNavigate(item.label)"
+        >{{ item.name }}</a
+      >
+    </nav>
+    <div class="user-actions" *ngIf="!isLogin">
+      <button class="login-btn" (click)="login()">Login</button>
+      <button class="signup-btn" (click)="signUp()">Sign Up</button>
+    </div>
+    <div class="user-actions" *ngIf="isLogin">
+      <button class="logout-btn" (click)="logOut()">Logout</button>
+    </div>
+  </nav>
+</header>

@@ -1,0 +1,49 @@
+<mat-card>
+  <mat-card-title>Login</mat-card-title>
+  <mat-card-content>
+    <form [formGroup]="formUser" (ngSubmit)="submit()">
+      <p>
+        <mat-form-field>
+          <input
+            type="text"
+            matInput
+            placeholder="Email"
+            formControlName="email"
+          />
+        </mat-form-field>
+        <mat-error *ngIf="formUser.controls['email'].errors?.['required'] && formUser.controls['email'].dirty">
+          Email is required
+        </mat-error>
+        <mat-error *ngIf="formUser.controls['email'].errors?.['email'] && formUser.controls['email'].dirty">
+          Please enter a valid email address
+        </mat-error>
+      </p>
+
+      <p>
+        <mat-form-field>
+          <input
+            type="password"
+            matInput
+            placeholder="Password"
+            formControlName="password"
+          />
+        </mat-form-field>
+        <mat-error *ngIf="formUser.controls['password'].errors?.['required'] && formUser.controls['password'].dirty">
+          Password is required
+        </mat-error>
+        <mat-error *ngIf="formUser.controls['password'].errors?.['minlength'] && formUser.controls['password'].dirty">
+          Password must be at least 8 characters
+        </mat-error>
+      </p>
+
+      <p *ngIf="loginError" class="error">
+        {{ loginError }}
+      </p>
+
+      <div class="button">
+        <button type="submit" [disabled]="formUser.invalid" mat-button>Login</button>
+      </div>
+    </form>
+  </mat-card-content>
+</mat-card>
+<app-loading [isLoading]="isLoading"></app-loading>

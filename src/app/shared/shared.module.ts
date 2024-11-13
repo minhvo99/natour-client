@@ -17,12 +17,15 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatCardModule } from '@angular/material/card';
+import { LoginComponent } from './components/login/login.component';
 
 const declarations = [
   HeaderComponent,
   FooterComponent,
   LoadingComponent,
   ConfirmDialogComponent,
+  LoginComponent,
 ];
 const imports = [
   CommonModule,
@@ -40,6 +43,7 @@ const imports = [
   MatPaginatorModule,
   MatTooltipModule,
   MatDialogModule,
+  MatCardModule,
 ];
 
 @NgModule({

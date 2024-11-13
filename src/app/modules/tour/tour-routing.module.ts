@@ -1,11 +1,18 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { TourComponent } from './tour.component';
+import { TourDetaiComponent } from './tour-detai/tour-detai.component';
 
 const routes: Routes = [
     {
         path: '',
-        component: TourComponent
+        component: TourComponent,
+        children: [
+          {
+            path: ':id',
+            component: TourDetaiComponent
+          }
+        ]
     },
 ]
 

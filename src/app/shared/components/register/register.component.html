@@ -1,0 +1,113 @@
+<mat-card>
+  <mat-card-title>Register</mat-card-title>
+  <mat-card-content>
+    <form [formGroup]="registerForm" (ngSubmit)="submit()" autocomplete="off">
+      <p>
+        <mat-form-field>
+          <input
+            type="text"
+            matInput
+            placeholder="User Name"
+            formControlName="name"
+          />
+        </mat-form-field>
+        <mat-error
+          *ngIf="
+            registerForm.controls['name'].errors?.['required'] &&
+            registerForm.controls['name'].dirty
+          "
+        >
+          User name is required
+        </mat-error>
+      </p>
+      <p>
+        <mat-form-field>
+          <input
+            type="text"
+            matInput
+            placeholder="Email"
+            formControlName="email"
+          />
+        </mat-form-field>
+        <mat-error
+          *ngIf="
+            registerForm.controls['email'].errors?.['required'] &&
+            registerForm.controls['email'].dirty
+          "
+        >
+          Email is required
+        </mat-error>
+        <mat-error
+          *ngIf="
+            registerForm.controls['email'].errors?.['email'] &&
+            registerForm.controls['email'].dirty
+          "
+        >
+          Please enter a valid email address
+        </mat-error>
+      </p>
+      <p>
+        <mat-form-field>
+          <input
+            type="password"
+            matInput
+            placeholder="Password"
+            formControlName="password"
+            autocomplete="off"
+          />
+        </mat-form-field>
+        <mat-error
+          *ngIf="
+            registerForm.controls['password'].errors?.['required'] &&
+            registerForm.controls['password'].dirty
+          "
+        >
+          Password is required
+        </mat-error>
+        <mat-error
+          *ngIf="
+            registerForm.controls['password'].errors?.['pattern'] &&
+            registerForm.controls['password'].dirty
+          "
+        >
+          Password must contain at least 8 characters, including a number and a
+          special character
+        </mat-error>
+      </p>
+      <p>
+        <mat-form-field>
+          <input
+            type="password"
+            matInput
+            placeholder="Confirm Password"
+            formControlName="passWordConfirm"
+            autocomplete="off"
+          />
+        </mat-form-field>
+        <mat-error
+          *ngIf="
+            registerForm.controls['passWordConfirm'].errors?.['required'] &&
+            registerForm.controls['passWordConfirm'].dirty
+          "
+        >
+          Password is required
+        </mat-error>
+        <mat-error
+          *ngIf="
+            registerForm.controls['passWordConfirm'].errors?.['notSame'] &&
+            !registerForm.controls['passWordConfirm'].errors?.['required'] &&
+            registerForm.controls['passWordConfirm'].dirty
+          "
+        >
+          Passwords do not match
+        </mat-error>
+      </p>
+      <div class="button">
+        <button type="submit" [disabled]="registerForm.invalid" mat-button>
+          Register
+        </button>
+      </div>
+    </form>
+  </mat-card-content>
+</mat-card>
+<app-loading [isLoading]="isLoading"></app-loading>
