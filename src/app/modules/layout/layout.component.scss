@@ -1,10 +1,29 @@
 html, body {
   height: 100%;
   margin: 0;
+  display: flex;
+  flex-direction: column;
 }
 
-.full-height {
-  min-height: calc(100vh - 400px);
+app-header {
+  height: 60px; /* Adjust this value based on your header height */
+  flex-shrink: 0;
+}
+
+app-footer {
+  height: 60px; /* Adjust this value based on your footer height */
+  flex-shrink: 0;
+}
+
+.container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: calc(100vh - 400px); /* 120px = header height (60px) + footer height (60px) */
+}
+
+.content {
+  flex: 1;
   display: flex;
   flex-direction: column;
 }

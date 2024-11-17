@@ -11,6 +11,8 @@ import { JWTInterceptor } from './core/interceptors/jwt.interceptor';
 import { ErrorInterceptor } from './core/interceptors/error.interceptor';
 import { PageNotFoundComponent } from './shared/components/page-not-found/page-not-found.component';
 import { RegisterComponent } from './shared/components/register/register.component';
+import { MessageService } from 'primeng/api';
+import { ToastService } from './shared/components/toast/toast-service.service';
 
 
 
@@ -18,6 +20,8 @@ import { RegisterComponent } from './shared/components/register/register.compone
   declarations: [AppComponent, PageNotFoundComponent, RegisterComponent],
   providers: [
     AuthGuardServiceGuard,
+    MessageService,
+    ToastService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: JWTInterceptor,

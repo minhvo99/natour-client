@@ -10,8 +10,6 @@ import { Router } from '@angular/router';
   providedIn: 'root'
 })
 export class AuthService {
-
-  isUserLoggedIn = false;
   private baseUrl = `${environment.api}/api/v1`;
   private userRoles!: string;
   private userSubject!: BehaviorSubject<User | null | any>;

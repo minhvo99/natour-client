@@ -1,0 +1,22 @@
+:host ::ng-deep {
+  .p-toast .p-toast-message.p-toast-message-success {
+    background: #e4f8f0;
+    border-left:6px solid #1ea97c;
+    color: #1ea97c;
+  }
+  .p-toast .p-toast-message.p-toast-message-error {
+    background: #ffe7e6;
+    border-left:6px  solid #ff5757;
+    color: #ff5757;
+  }
+  .p-toast .p-toast-message.p-toast-message-info {
+    background: #e9e9ff;
+    border-left:6px  solid #696cff;
+    color: #696cff;
+  }
+  .p-toast .p-toast-message.p-toast-message-warn {
+    background: #fff2e2;
+    border-left:6px  solid #cc8925;
+    color: #cc8925;
+  }
+}

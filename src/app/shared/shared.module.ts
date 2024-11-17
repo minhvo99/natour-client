@@ -19,6 +19,8 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatCardModule } from '@angular/material/card';
 import { LoginComponent } from './components/login/login.component';
+import { ToastComponent } from './components/toast/toast.component';
+import { ToastModule } from 'primeng/toast';
 
 const declarations = [
   HeaderComponent,
@@ -26,6 +28,7 @@ const declarations = [
   LoadingComponent,
   ConfirmDialogComponent,
   LoginComponent,
+  ToastComponent,
 ];
 const imports = [
   CommonModule,
@@ -46,9 +49,11 @@ const imports = [
   MatCardModule,
 ];
 
+const importsPrimeNg = [ToastModule];
+
 @NgModule({
-  imports: [imports],
+  imports: [...imports, ...importsPrimeNg],
   declarations: [...declarations],
-  exports: [...imports, ...declarations],
+  exports: [...imports, ...declarations, ...importsPrimeNg],
 })
 export class SharedModule {}

@@ -4,12 +4,17 @@ export interface Guide {
   photo: string;
   id: string;
 }
+interface Difficylty {
+  easy: string;
+  medium: string;
+  difficult: string;
+}
 
 export interface Tour {
   name: string;
   duration: number;
   maxGroupSize: number;
-  difficulty: string;
+  difficulty: Difficylty;
   ratingsQuantity: number;
   ratingsAverage: number;
   price: number;
@@ -17,9 +22,15 @@ export interface Tour {
   description: string;
   imageCover: string;
   images: string[];
-  startLocation: Location;
-  guides: Guide[];
+  startLocation?: any;
+  guides?: Guide[];
   id: string;
+  createdAt: Date;
+  startDates?: Date[];
+  secretTour?: boolean;
+  location?: any[];
+  slug: string;
+  durationWeeks?: number;
 }
 
 export interface Filters {
