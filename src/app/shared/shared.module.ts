@@ -3,8 +3,6 @@ import { CommonModule } from '@angular/common';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { LoadingComponent } from './components/loading/loading.component';
-import { ConfirmDialogComponent } from './components/confirm-dialog/confirm-dialog.component';
-import { NgbToastModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
@@ -21,21 +19,19 @@ import { MatCardModule } from '@angular/material/card';
 import { LoginComponent } from './components/login/login.component';
 import { ToastComponent } from './components/toast/toast.component';
 import { ToastModule } from 'primeng/toast';
-import {CarouselModule} from 'primeng/carousel';
-import {CardModule} from 'primeng/card';
-import {ButtonModule} from 'primeng/button';
+import { CarouselModule } from 'primeng/carousel';
+import { CardModule } from 'primeng/card';
+import { ButtonModule } from 'primeng/button';
 
 const declarations = [
   HeaderComponent,
   FooterComponent,
   LoadingComponent,
-  ConfirmDialogComponent,
   LoginComponent,
   ToastComponent,
 ];
 const imports = [
   CommonModule,
-  NgbToastModule,
   FormsModule,
   ReactiveFormsModule,
   MatToolbarModule,
@@ -52,7 +48,7 @@ const imports = [
   MatCardModule,
   CarouselModule,
   CardModule,
-  ButtonModule
+  ButtonModule,
 ];
 
 const importsPrimeNg = [ToastModule];
