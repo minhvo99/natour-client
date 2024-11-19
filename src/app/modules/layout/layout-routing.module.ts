@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LayoutComponent } from './layout.component';
-import { PageNotFoundComponent } from '@app/shared/components/page-not-found/page-not-found.component';
 
 const routes: Routes = [
   {
@@ -11,16 +10,12 @@ const routes: Routes = [
       {
         path: '',
         pathMatch: 'full',
-        redirectTo: 'tour',
+        redirectTo: 'home',
       },
       {
-        path: 'tour',
+        path: 'home',
         loadChildren: () =>
           import('../tour/tour.module').then((m) => m.TourModule),
-      },
-      {
-        path: '**',
-        component: PageNotFoundComponent,
       },
     ],
   },

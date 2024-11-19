@@ -13,8 +13,9 @@ export class HeaderComponent implements OnInit {
 
   menus: Option[] = [
     { id: 'home', name: 'Home', label: 'home', isActive: true },
-    { id: 'about', name: 'About', label: 'about', isActive: true },
-    { id: 'services', name: 'Services', label: 'services', isActive: true },
+    { id: 'tour', name: 'Tour', label: 'tour', isActive: true },
+    { id: 'booking', name: 'Booking', label: 'booking', isActive: true },
+    { id: 'blog', name: 'Blog', label: 'blog', isActive: true },
     { id: 'contact', name: 'Contact', label: 'contact', isActive: true },
   ];
 

@@ -1,65 +1,396 @@
-.header {
-  background: #ffffff;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-  .nav-bar {
-    max-width: 1920px;
-    @media (max-width: 1200px) {
-      max-width: 1000px;
-    }
+$color_1: #1e1e1e;
+$color_2: #fff;
+$color_3: #f35525;
+$color_4: #ee626b;
+$background-color_1: #fff;
+$background-color_2: #1e1e1e;
+$background-color_3: #f35525;
+$background-color_4: transparent;
+$background-color_5: #f1f0fe;
 
-    @media (max-width: 992px) {
-      max-width: 750px;
-    }
-
-    @media (max-width: 768px) {
-      max-width: 500px;
-    }
-
-    @media (max-width: 576px) {
-      max-width: 100%;
-    }
-    margin: 0 auto;
-    padding: 1rem;
+.header-area {
+  position: relative;
+  background-color: $background-color_1;
+  height: 100px;
+  z-index: 100;
+  -webkit-transition: all 0.5s ease 0s;
+  -moz-transition: all 0.5s ease 0s;
+  -o-transition: all 0.5s ease 0s;
+  transition: all 0.5s ease 0s;
+  .main-nav {
+    background: transparent;
     display: flex;
-    justify-content: space-between;
-    align-items: center;
     .logo {
-      font-size: 1.5rem;
-      font-weight: bold;
-      color: #2196f3;
-    }
-    .nav-links a {
-      text-decoration: none;
-      color: #333;
-      margin: 0 1rem;
-      padding: 0.5rem;
-      transition: color 0.3s;
-      cursor: pointer;
-
-      .nav-links a:hover, .nav-links a.active {
-        color: #2196F3;
+      -webkit-transition: all 0.3s ease 0s;
+      -moz-transition: all 0.3s ease 0s;
+      -o-transition: all 0.3s ease 0s;
+      transition: all 0.3s ease 0s;
+      display: inline-block;
+      h1 {
+        line-height: 100px;
+        font-size: 28px;
+        text-transform: uppercase;
+        color: $color_1;
+        font-weight: 700;
+        letter-spacing: 2px;
       }
     }
+    ul.nav {
+      flex-basis: 100%;
+      margin-top: 30px;
+      justify-content: right;
+      -webkit-transition: all 0.3s ease 0s;
+      -moz-transition: all 0.3s ease 0s;
+      -o-transition: all 0.3s ease 0s;
+      transition: all 0.3s ease 0s;
+      position: relative;
+      z-index: 999;
+    }
+    .nav {
+      li {
+        padding-left: 10px;
+        padding-right: 10px;
+        height: 100px;
+        line-height: 100px;
+        a {
+          display: block;
+          padding-left: 20px;
+          padding-right: 20px;
+          font-weight: 500;
+          font-size: 15px;
+          height: 40px;
+          line-height: 40px;
+          text-transform: capitalize;
+          color: $color_1;
+          -webkit-transition: all 0.4s ease 0s;
+          -moz-transition: all 0.4s ease 0s;
+          -o-transition: all 0.4s ease 0s;
+          transition: all 0.4s ease 0s;
+          border: transparent;
+          letter-spacing: 0.25px;
+        }
+        &:hover {
+          a {
+            color: $color_3;
+          }
+        }
+        a.active {
+          color: $color_3;
+        }
+      }
+    }
+    .user-actions{
+      display: flex;
+      background: transparent;
+      flex-direction: row;
+      justify-content: space-evenly;
+      align-items: flex-start;
+      flex-basis: 100%;
 
-    .user-actions button {
-      padding: 0.5rem 1rem;
-      margin-left: 1rem;
-      border: none;
-      border-radius: 5px;
+      button {
+        display: block;
+        padding-left: 20px;
+        padding-right: 20px;
+        font-weight: 500;
+        font-size: 15px;
+        height: 40px;
+        line-height: 40px;
+        text-transform: capitalize;
+        color: #1e1e1e;
+        transition: all 0.4s ease 0s;
+        letter-spacing: 0.25px;
+        border: none;
+        border-radius: 5px;
+        margin-top: 30px;
+        cursor: pointer;
+
+      }
+    }
+    .menu-trigger {
       cursor: pointer;
-
-      .login-btn {
-        background: transparent;
-        color: #2196F3;
+      position: absolute;
+      top: 23px;
+      width: 32px;
+      height: 40px;
+      text-indent: -9999em;
+      z-index: 99;
+      right: 20px;
+      display: none;
+      span {
+        -moz-transition: all 0.4s;
+        -o-transition: all 0.4s;
+        -webkit-transition: all 0.4s;
+        transition: all 0.4s;
+        background-color: $background-color_2;
+        display: block;
+        position: absolute;
+        width: 30px;
+        height: 2px;
+        left: 0;
+        top: 16px;
+        &:before {
+          -moz-transition: all 0.4s;
+          -o-transition: all 0.4s;
+          -webkit-transition: all 0.4s;
+          transition: all 0.4s;
+          background-color: $background-color_2;
+          display: block;
+          position: absolute;
+          width: 30px;
+          height: 2px;
+          left: 0;
+          -moz-transition: all 0.4s;
+          -o-transition: all 0.4s;
+          -webkit-transition: all 0.4s;
+          transition: all 0.4s;
+          background-color: $background-color_2;
+          display: block;
+          position: absolute;
+          width: 30px;
+          height: 2px;
+          left: 0;
+          width: 75%;
+          content: '';
+          -moz-transform-origin: 33% 100%;
+          -ms-transform-origin: 33% 100%;
+          -webkit-transform-origin: 33% 100%;
+          transform-origin: 33% 100%;
+          top: -10px;
+          z-index: 10;
+        }
+        &:after {
+          -moz-transition: all 0.4s;
+          -o-transition: all 0.4s;
+          -webkit-transition: all 0.4s;
+          transition: all 0.4s;
+          background-color: $background-color_2;
+          display: block;
+          position: absolute;
+          width: 30px;
+          height: 2px;
+          left: 0;
+          -moz-transition: all 0.4s;
+          -o-transition: all 0.4s;
+          -webkit-transition: all 0.4s;
+          transition: all 0.4s;
+          background-color: $background-color_2;
+          display: block;
+          position: absolute;
+          width: 30px;
+          height: 2px;
+          left: 0;
+          width: 75%;
+          content: '';
+          -moz-transform-origin: 33% 0;
+          -ms-transform-origin: 33% 0;
+          -webkit-transform-origin: 33% 0;
+          transform-origin: 33% 0;
+          top: 10px;
+        }
       }
-
-      .signup-btn {
-        background: #2196F3;
-        color: white;
+    }
+    .menu-trigger.active {
+      span {
+        background-color: $background-color_4;
+        width: 100%;
+        &:before {
+          background-color: $background-color_4;
+          width: 100%;
+          -moz-transform: translateY(6px) translateX(1px) rotate(45deg);
+          -ms-transform: translateY(6px) translateX(1px) rotate(45deg);
+          -webkit-transform: translateY(6px) translateX(1px) rotate(45deg);
+          transform: translateY(6px) translateX(1px) rotate(45deg);
+          background-color: $background-color_2;
+        }
+        &:after {
+          background-color: $background-color_4;
+          width: 100%;
+          -moz-transform: translateY(-6px) translateX(1px) rotate(-45deg);
+          -ms-transform: translateY(-6px) translateX(1px) rotate(-45deg);
+          -webkit-transform: translateY(-6px) translateX(1px) rotate(-45deg);
+          transform: translateY(-6px) translateX(1px) rotate(-45deg);
+          background-color: $background-color_2;
+        }
       }
+    }
+  }
+}
+.background-header {
+  .main-nav {
+    .logo {
+      h1 {
+        line-height: 80px;
+      }
+    }
+    .nav {
+      li {
+        a.active {
+          color: $color_3;
+        }
+      }
+    }
+    .menu-trigger {
+      top: 22px;
+    }
+    ul.nav {
+      margin-top: 20px;
+    }
+    .menu-trigger.active {
+      span {
+        &:before {
+          background-color: $background-color_2;
+        }
+        &:after {
+          background-color: $background-color_2;
+        }
+      }
+    }
+  }
+}
+.visible {
+  display: inline !important;
+}
+@media (max-width: 1200px) {
+  .header-area {
+    .main-nav {
+      .nav {
+        li {
+          padding-left: 5px;
+          padding-right: 5px;
+        }
+      }
+    }
+  }
+}
+@media (max-width: 767px) {
+  .background-header {
+    .main-nav {
+      box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.15);
+      border-radius: 0px 0px 25px 25px;
+      width: 100%;
+      .nav {
+        background-color: $background-color_1;
+        li {
+          a {
+            line-height: 50px;
+            height: 50px;
+            font-weight: 400;
+            color: $color_1;
+            background-color: $background-color_1;
+            border-radius: 0px 0px 25px 25px;
+          }
+          border-top: 1px solid #ddd;
+          background-color: $background-color_5;
+          height: 50px;
+          border-radius: 0px 0px 25px 25px;
+        }
+      }
+      .logo {
+        top: 0px;
+      }
+      .border-button {
+        top: 0px !important;
+      }
+    }
+  }
+  .header-area {
+    .main-nav {
+      .nav {
+        background-color: $background-color_1;
+        height: auto;
+        flex-basis: 100%;
+        float: none;
+        width: 100%;
+        display: none;
+        -webkit-transition: all 0s ease 0s;
+        -moz-transition: all 0s ease 0s;
+        -o-transition: all 0s ease 0s;
+        transition: all 0s ease 0s;
+        margin-left: 0px;
+        li {
+          a {
+            line-height: 50px;
+            height: 50px;
+            font-weight: 400;
+            color: $color_1;
+            background-color: $background-color_1;
+            border-radius: 0px 0px 25px 25px;
+          }
+          border-top: 1px solid #ddd;
+          background-color: $background-color_5;
+          height: 50px;
+          border-radius: 0px 0px 25px 25px;
+          width: 100%;
+          background: #fff;
+          padding-left: 0px !important;
+          padding-right: 0px !important;
+          &:first-child {
+            border-top: 1px solid #eee;
+          }
+        }
+      }
+      .logo {
+        position: absolute;
+        left: 30px;
+        top: 0px;
+      }
+      .border-button {
+        position: absolute;
+        top: 15px;
+        right: 70px;
+      }
+      overflow: hidden;
+    }
+    .nav {
+      li {
+        &:last-child {
+          a {
+            background-color: $background-color_4 !important;
+            font-weight: 300 !important;
+            text-transform: capitalize !important;
+          }
+        }
+      }
+    }
+    padding: 0px 15px;
+    height: 80px;
+    box-shadow: none;
+    text-align: center;
+    .container {
+      padding: 0px;
+    }
+    .logo {
+      margin-left: 0px;
+    }
+    .menu-trigger {
+      display: block !important;
+    }
+  }
+  .header-area.header-sticky {
+    .nav {
+      li {
+        a {
+          &:hover {
+            color: $color_4 !important;
+            opacity: 1;
+          }
+        }
+        a.active {
+          color: $color_4 !important;
+          opacity: 1;
+        }
+      }
+      li.search-icon {
+        a {
+          width: 100%;
+        }
+      }
+      margin-top: 80px !important;
+    }
+  }
+  .background-header.header-sticky {
+    .nav {
+      margin-top: 80px !important;
     }
   }
 }

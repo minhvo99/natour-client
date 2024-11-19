@@ -1,7 +1,28 @@
-<div class="container">
-
-  <div class="row">
-
+<div class="main-banner">
+  <div class="owl-carousel owl-banner">
+    <div class="item item-1">
+      <div class="header-text">
+        <span class="category">Toronto, <em>Canada</em></span>
+        <h2>Hurry!<br />Get the Best Tour for you</h2>
+      </div>
+    </div>
   </div>
-  <app-loading [isLoading]="isLoading"></app-loading>
 </div>
+
+<div class="properties section">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-4 offset-lg-4">
+        <div class="section-heading text-center">
+          <h2>We Provide The Best Tour You Like</h2>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-4 col-md-6" *ngFor="let tour of listTour">
+        <tour-card [tour]="tour"></tour-card>
+      </div>
+    </div>
+  </div>
+</div>
+<app-loading [isLoading]="isLoading"></app-loading>

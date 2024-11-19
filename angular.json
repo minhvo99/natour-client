@@ -80,7 +80,8 @@
               "browserTarget": "my-store:build:production"
             },
             "development": {
-              "browserTarget": "my-store:build:development"
+              "browserTarget": "my-store:build:development",
+              "proxyConfig": "src/proxy.conf.json"
             }
           },
           "defaultConfiguration": "development"

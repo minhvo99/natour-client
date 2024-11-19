@@ -1,20 +1,33 @@
-<header class="header">
-  <nav class="nav-bar">
-    <div class="logo">TravelGuide</div>
-    <nav *ngFor="let item of menus" class="nav-links">
-      <a
-        class="{{ item.label }}"
-        *ngIf="item.isActive"
-        (click)="onNavigate(item.label)"
-        >{{ item.name }}</a
-      >
-    </nav>
-    <div class="user-actions" *ngIf="!isLogin">
-      <button class="login-btn" (click)="login()">Login</button>
-      <button class="signup-btn" (click)="signUp()">Sign Up</button>
+<header class="header-area header-sticky">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <nav class="main-nav">
+          <a class="logo">
+            <h1>TravelGuide</h1>
+          </a>
+          <ul class="nav" *ngFor="let item of menus">
+            <li>
+              <a
+                class="{{ item.label }}"
+                *ngIf="item.isActive"
+                (click)="onNavigate(item.label)"
+                >{{ item.name }}</a
+              >
+            </li>
+          </ul>
+            <div class="user-actions" *ngIf="!isLogin">
+              <button class="login-btn" (click)="login()">Login</button>
+              <button class="signup-btn" (click)="signUp()">Sign Up</button>
+            </div>
+            <div class="user-actions" *ngIf="isLogin">
+              <button class="logout-btn" (click)="logOut()">Logout</button>
+            </div>
+          <a class="menu-trigger">
+            <span>Menu</span>
+          </a>
+        </nav>
+      </div>
     </div>
-    <div class="user-actions" *ngIf="isLogin">
-      <button class="logout-btn" (click)="logOut()">Logout</button>
-    </div>
-  </nav>
+  </div>
 </header>

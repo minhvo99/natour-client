@@ -21,6 +21,9 @@ import { MatCardModule } from '@angular/material/card';
 import { LoginComponent } from './components/login/login.component';
 import { ToastComponent } from './components/toast/toast.component';
 import { ToastModule } from 'primeng/toast';
+import {CarouselModule} from 'primeng/carousel';
+import {CardModule} from 'primeng/card';
+import {ButtonModule} from 'primeng/button';
 
 const declarations = [
   HeaderComponent,
@@ -47,6 +50,9 @@ const imports = [
   MatTooltipModule,
   MatDialogModule,
   MatCardModule,
+  CarouselModule,
+  CardModule,
+  ButtonModule
 ];
 
 const importsPrimeNg = [ToastModule];

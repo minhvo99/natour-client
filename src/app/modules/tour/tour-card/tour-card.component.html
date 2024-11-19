@@ -1,0 +1,74 @@
+<div class="my-4 tour-card" >
+  <div class="tour-card-header">
+    <div class="image-cover">
+      <img  [src]="tour.imageCover || 'assets/images/property-01.jpg'" [alt]="tour.name">
+    </div>
+    <h3 class="tour-name">
+      {{tour.name}}
+    </h3>
+    <div class="tour-price flex flex-column">
+      <span class="old">{{tour.price | currency}}</span>
+      <span class="new">{{tour.price | currency}}</span>
+    </div>
+    <p class="tour-summary">
+      {{tour.summary}}
+    </p>
+  </div>
+  <div class="tour-card-tag">
+    <span *ngIf="true">New</span>
+    <span *ngIf="true">Hot</span>
+  </div>
+  <div class="tour-card-body">
+    <ul>
+      <li>
+        <span class="label">Type:</span>
+        <span class="value">{{tour.difficulty | titlecase}}</span>
+      </li>
+      <li>
+        <span class="label">Rating average:</span>
+        <span class="value">{{tour.ratingsAverage}}</span>
+      </li>
+      <li>
+        <span class="label">Duration:</span>
+        <span class="value">{{tour.duration || ''}}</span>
+      </li>
+      <li>
+        <span class="label">Guide:</span>
+        <span class="value" *ngFor="let guide of tour.guides">{{ guide.name }}</span>
+      </li>
+    </ul>
+  </div>
+  <div class="tour-card-footer">
+    <div class="main-button">
+      <a >Booking now</a>
+    </div>
+  </div>
+</div>
+<!-- <div class="card">
+  <div class="card__side card__side--front">
+    <div class="card__picture card__picture-1">&nbsp;</div>
+    <div class="card__heading">
+      <span class="card__heading-span card__heading-span-1"
+        >{{tour.name}}</span
+      >
+    </div>
+    <div class="card__details">
+      <ul>
+        <li>Duration: {{tour.durationWeeks}}</li>
+        <li>Up to {{tour.maxGroupSize}} people</li>
+        <li>{{tour.guides.length || 1}} tour guides</li>
+        <li>Sleep in cozy hotels</li>
+        <li>Difficulty: {{tour.difficulty || 'easy'}}</li>
+      </ul>
+    </div>
+  </div>
+  <div class="card__side card__side--back card__side--back-1">
+    <div class="card__cta">
+      <div class="back-price-box">
+        <span class="back-price-box-only">only</span>
+        <span class="back-price-box-price">{{tour.price | currency}}</span>
+      </div>
+      <a class="btn btn--white">Book now!</a>
+    </div>
+  </div>
+</div> -->
