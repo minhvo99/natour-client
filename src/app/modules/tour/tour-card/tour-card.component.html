@@ -1,4 +1,4 @@
-<div class="my-4 tour-card" >
+<div class="my-4 tour-card" (click)="onNavigateToTourDetail(tour.id)">
   <div class="tour-card-header">
     <div class="image-cover">
       <img  [src]="tour.imageCover || 'assets/images/property-01.jpg'" [alt]="tour.name">
@@ -44,31 +44,3 @@
     </div>
   </div>
 </div>
-<!-- <div class="card">
-  <div class="card__side card__side--front">
-    <div class="card__picture card__picture-1">&nbsp;</div>
-    <div class="card__heading">
-      <span class="card__heading-span card__heading-span-1"
-        >{{tour.name}}</span
-      >
-    </div>
-    <div class="card__details">
-      <ul>
-        <li>Duration: {{tour.durationWeeks}}</li>
-        <li>Up to {{tour.maxGroupSize}} people</li>
-        <li>{{tour.guides.length || 1}} tour guides</li>
-        <li>Sleep in cozy hotels</li>
-        <li>Difficulty: {{tour.difficulty || 'easy'}}</li>
-      </ul>
-    </div>
-  </div>
-  <div class="card__side card__side--back card__side--back-1">
-    <div class="card__cta">
-      <div class="back-price-box">
-        <span class="back-price-box-only">only</span>
-        <span class="back-price-box-price">{{tour.price | currency}}</span>
-      </div>
-      <a class="btn btn--white">Book now!</a>
-    </div>
-  </div>
-</div> -->

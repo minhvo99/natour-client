@@ -26,7 +26,7 @@ export class TourService {
 
   getTourbyId(id: string): Observable<Tour> {
     return this.http
-      .get<Tour>(`${this.baseUrl}/tours/${id}`)
+      .get<Tour>(`${this.baseUrl}/tour/${id}`)
       .pipe(map((res: any) => res.data));
   }
 }

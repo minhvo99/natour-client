@@ -10,13 +10,33 @@ const routes: Routes = [
       {
         path: '',
         pathMatch: 'full',
-        redirectTo: 'home',
+        redirectTo: 'tour',
       },
       {
         path: 'home',
         loadChildren: () =>
+          import('../home/home.module').then((m) => m.HomeModule),
+      },
+      {
+        path: 'tour',
+        loadChildren: () =>
           import('../tour/tour.module').then((m) => m.TourModule),
       },
+      {
+        path: 'booking',
+        loadChildren: () =>
+          import('../booking/booking.module').then((m) => m.BookingModule),
+      },
+      {
+        path: 'blog',
+        loadChildren: () =>
+          import('../blog/blog.module').then((m) => m.BlogModule),
+      },
+      {
+        path: 'contact',
+        loadChildren: () =>
+          import('../contact/contact.module').then((m) => m.ContactModule),
+      }
     ],
   },
 ];

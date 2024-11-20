@@ -1,1 +1,9 @@
-<p>tour-detai works!</p>
+<div class="tour-detail row">
+  <div class="col-6">
+    <img [src]="tour.imageCover" [alt]="tour.name">
+  </div>
+  <div class="col-6">
+    <h3>{{tour.name}}</h3>
+  </div>
+</div>
+<app-loading [isLoading]="isLoading"></app-loading>

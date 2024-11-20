@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Tour } from '@app/shared/modal/tour';
 
 @Component({
@@ -9,9 +10,13 @@ import { Tour } from '@app/shared/modal/tour';
 export class TourCardComponent implements OnInit {
   @Input() tour!: Tour;
 
-  constructor() { }
+  constructor(private route: Router) { }
 
   ngOnInit(): void {
+  }
+
+  onNavigateToTourDetail(tourId: string) {
+    this.route.navigateByUrl(`/tour/${tourId}`);
   }
 
 }

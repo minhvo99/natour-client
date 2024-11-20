@@ -4,21 +4,18 @@ import { TourComponent } from './tour.component';
 import { TourDetaiComponent } from './tour-detai/tour-detai.component';
 
 const routes: Routes = [
-    {
-        path: '',
-        component: TourComponent,
-        children: [
-          {
-            path: ':id',
-            component: TourDetaiComponent
-          }
-        ]
-    },
-]
+  {
+    path: '',
+    component: TourComponent,
+  },
+  {
+    path: ':id',
+    component: TourDetaiComponent,
+  },
+];
 
 @NgModule({
-    imports: [RouterModule.forChild(routes)],
-    exports: [RouterModule],
+  imports: [RouterModule.forChild(routes)],
+  exports: [RouterModule],
 })
-
 export class TourRoutingModule {}
