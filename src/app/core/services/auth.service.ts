@@ -54,7 +54,6 @@ export class AuthService {
   logout (): void {
     localStorage.removeItem('JWT_Token');
     this.userSubject.next(null);
-    this.router.navigate(['/tour']);
   }
 
   get role(): string {

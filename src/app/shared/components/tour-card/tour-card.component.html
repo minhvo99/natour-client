@@ -1,7 +1,7 @@
 <div class="my-4 tour-card" (click)="onNavigateToTourDetail(tour.id)">
   <div class="tour-card-header">
     <div class="image-cover">
-      <img  [src]="tour.imageCover || 'assets/images/property-01.jpg'" [alt]="tour.name">
+      <img  [src]="tour.imageCover" [alt]="tour.name">
     </div>
     <h3 class="tour-name">
       {{tour.name}}

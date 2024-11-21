@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, NavigationStart, Router } from '@angular/router';
 import { AuthService } from '@app/core/services/auth.service';
 import { Subject, takeUntil } from 'rxjs';
 
@@ -14,14 +14,18 @@ export class LoginComponent implements OnInit {
   $destroy = new Subject<void>();
   loginError = '';
   isLoading = false;
+  returnUrl: string | null = null;
 
   constructor(
     private formBuilder: FormBuilder,
     private authService: AuthService,
     private router: Router,
-  ) {}
+    private route: ActivatedRoute
+  ) {
+  }
 
   ngOnInit(): void {
+    this.returnUrl = this.route.snapshot.queryParams['returnUrl'];
     this.formUser = this.formBuilder.group({
       email: ['', Validators.compose([Validators.required, Validators.email])],
       password: [
@@ -48,7 +52,7 @@ export class LoginComponent implements OnInit {
       .subscribe({
         next: () => {
           this.isLoading = false;
-          this.router.navigate(['/home']);
+          this.router.navigateByUrl(this.returnUrl!);
         },
         error: (err) => {
           this.isLoading = false;

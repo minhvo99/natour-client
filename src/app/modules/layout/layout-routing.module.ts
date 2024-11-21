@@ -10,7 +10,7 @@ const routes: Routes = [
       {
         path: '',
         pathMatch: 'full',
-        redirectTo: 'tour',
+        redirectTo: 'home',
       },
       {
         path: 'home',

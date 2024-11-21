@@ -21,11 +21,12 @@ export interface Tour {
   guides: Guide[];
   id: string;
   createdAt: Date;
-  startDates?: Date[];
+  startDates?: any[];
   secretTour?: boolean;
   location?: any[];
   slug: string;
   durationWeeks?: number;
+  reviews?: any[];
 }
 
 export interface Filters {

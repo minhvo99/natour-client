@@ -54,7 +54,7 @@ export class TourComponent implements OnInit {
   }
 
   getTourCheap(): Observable<Tour[]> {
-    return this.tourService.getTopTourCheap().pipe(takeUntil(this.$destroy));
+    return this.tourService.getAllTours().pipe(takeUntil(this.$destroy));
   }
 
   ngOnDestroy(): void {

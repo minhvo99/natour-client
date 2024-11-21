@@ -14,7 +14,7 @@ export class TourService {
 
   getAllTours(): Observable<Tour[]> {
     return this.http
-      .get<Tour[]>(`${this.baseUrl}/tours`)
+      .get<Tour[]>(`${this.baseUrl}/tour`)
       .pipe(map((res: any) => res.data));
   }
 
@@ -28,5 +28,9 @@ export class TourService {
     return this.http
       .get<Tour>(`${this.baseUrl}/tour/${id}`)
       .pipe(map((res: any) => res.data));
+  }
+
+  reviewTour(id: string, body: any): Observable<any> {
+    return this.http.post(`${this.baseUrl}/tour/${id}/reviews`, body);
   }
 }

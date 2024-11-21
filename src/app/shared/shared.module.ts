@@ -22,6 +22,8 @@ import { ToastModule } from 'primeng/toast';
 import { CarouselModule } from 'primeng/carousel';
 import { CardModule } from 'primeng/card';
 import { ButtonModule } from 'primeng/button';
+import { TourCardComponent } from './components/tour-card/tour-card.component';
+import {AvatarModule} from 'primeng/avatar';
 
 const declarations = [
   HeaderComponent,
@@ -29,6 +31,7 @@ const declarations = [
   LoadingComponent,
   LoginComponent,
   ToastComponent,
+  TourCardComponent
 ];
 const imports = [
   CommonModule,
@@ -49,6 +52,7 @@ const imports = [
   CarouselModule,
   CardModule,
   ButtonModule,
+  AvatarModule
 ];
 
 const importsPrimeNg = [ToastModule];

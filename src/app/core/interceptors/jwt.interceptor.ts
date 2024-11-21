@@ -17,12 +17,12 @@ export class JWTInterceptor implements HttpInterceptor {
     request: HttpRequest<unknown>,
     next: HttpHandler,
   ): Observable<HttpEvent<unknown>> {
-    const token = localStorage.getItem('JWT_Token');
+    const token = localStorage.getItem('JWT_Token') ? JSON.parse(localStorage.getItem('JWT_Token')!).token as string : null;
     const user = this.authService.userValue;
     const isLoggedIn = user && user.token;
     const isApiUrl = request.url.startsWith(environment.api);
     if (isLoggedIn && isApiUrl) {
-      request.clone({
+      request = request.clone({
         setHeaders: {
           Authorization: `Bearer ${token}`,
           'Content-Type': 'application/json',

@@ -1,9 +1,111 @@
 <div class="tour-detail row">
   <div class="col-6">
-    <img [src]="tour.imageCover" [alt]="tour.name">
+    <div class="img-cover">
+      <img [src]="tour.imageCover" [alt]="tour.name" />
+    </div>
+    <div class="img-tour row my-3">
+      <div class="col-4" *ngFor="let image of tour.images">
+        <img [src]="image" [alt]="tour.name" />
+      </div>
+    </div>
   </div>
   <div class="col-6">
-    <h3>{{tour.name}}</h3>
+    <h3>{{ tour.name }}</h3>
+    <p>{{ tour.summary }}</p>
+    <div class="tour-detail-info">
+      <ul>
+        <li>
+          <span class="label">Difficulty:</span>
+          <span class="value mx-2">{{ tour.difficulty | titlecase }}</span>
+        </li>
+        <li>
+          <span class="label">Rating average:</span>
+          <span class="value mx-2">{{ tour.ratingsAverage }}</span>
+        </li>
+        <li>
+          <span class="label">Rating quantity:</span>
+          <span class="value mx-2">{{ tour.ratingsQuantity }} ratings</span>
+        </li>
+        <li>
+          <span class="label">Max group size:</span>
+          <span class="value mx-2">{{ tour.maxGroupSize }}</span>
+        </li>
+        <li>
+          <span class="label">Start date:</span>
+          <span class="value mx-2" *ngFor="let date of tour.startDates">{{
+            date | date: 'dd/MM/yyyy'
+          }}</span>
+        </li>
+        <li>
+          <span class="label">Price:</span>
+          <span class="value mx-2">{{ tour.price }}</span>
+        </li>
+        <li>
+          <span class="label">Duration:</span>
+          <span class="value mx-2">{{ tour.duration || '' }} weeks</span>
+        </li>
+        <li>
+          <span class="label">Guide:</span>
+          <span class="value mx-2" *ngFor="let guide of tour.guides">{{
+            guide.name
+          }}</span>
+        </li>
+        <li>
+          <span class="label">Description:</span>
+          <span class="value mx-2">{{ tour.description }}</span>
+        </li>
+      </ul>
+    </div>
   </div>
+</div>
+<div class="row">
+  <div class="col-12">
+    <div class="review">
+      <h4>Reviews</h4>
+      <div class="review-list">
+        <div class="review-item" *ngFor="let review of tour.reviews">
+          <div class="review-item-header">
+            <div class="review-item-header-left">
+              <p-avatar [style]="{'background-color': '#9c27b0', 'color': '#ffffff'}" [label]="getAvatar(review).firstChar" [image]="getAvatar(review).avatarUrl" shape="circle"></p-avatar>
+              <span>{{ review.user.name }}</span>
+            </div>
+            <div class="review-item-header-right">
+              <span>{{ review.rating }} stars</span>
+              <span>{{ review.createdAt | date: 'dd/MM/yyyy' }}</span>
+            </div>
+          </div>
+          <div class="review-item-body">
+            <p>{{ review.review }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <ng-container *ngIf="isLogined; else elseTemplate">
+    <div class="col-12">
+      <div class="review-form">
+        <h4>Add your review</h4>
+        <form (submit)="onSubmitReview()" [formGroup]="reviewForm ">
+          <div class="form-group">
+            <label for="rating">Rating</label>
+            <select class="form-control" id="rating" name="rating" formControlName="rating">
+              <option *ngFor="let i of [1, 2, 3, 4, 5]" [value]="i">{{ i }}</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="review">Review</label>
+            <textarea class="form-control" id="review" name="review" formControlName="review"></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+      </div>
+    </div>
+  </ng-container>
+  <ng-template #elseTemplate>
+    <h3>Log in to page and add your review</h3>
+  </ng-template>
+
 </div>
 <app-loading [isLoading]="isLoading"></app-loading>

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { NavigationStart, Router } from '@angular/router';
 import { Option } from '@app/core/models/constants';
 import { AuthService } from '@app/core/services/auth.service';
 
@@ -10,11 +10,11 @@ import { AuthService } from '@app/core/services/auth.service';
 })
 export class HeaderComponent implements OnInit {
   isLogin = false;
+  previousUrl: string | null = null;
 
   menus: Option[] = [
     { id: 'home', name: 'Home', label: 'home', isActive: true },
     { id: 'tour', name: 'Tour', label: 'tour', isActive: true },
-    { id: 'booking', name: 'Booking', label: 'booking', isActive: true },
     { id: 'blog', name: 'Blog', label: 'blog', isActive: true },
     { id: 'contact', name: 'Contact', label: 'contact', isActive: true },
   ];
@@ -22,17 +22,28 @@ export class HeaderComponent implements OnInit {
   constructor(
     private authService: AuthService,
     private router: Router,
-  ) {}
+  ) {
+
+  }
 
   ngOnInit(): void {
+    this.router.events.subscribe(event => {
+      if (event instanceof NavigationStart) {
+        this.previousUrl = event.url;
+      }
+    });
     const user = this.authService.userValue;
     if (user) {
       this.isLogin = user.user && user?.token;
     }
+
+    if (this.isLogin) {
+      this.menus.push({ id: 'booking', name: 'Booking', label: 'booking', isActive: true });
+    }
   }
 
   login() {
-    this.router.navigate(['/login']);
+    this.router.navigate(['/login'],  { queryParams: { returnUrl: this.previousUrl } });
   }
 
   signUp() {
