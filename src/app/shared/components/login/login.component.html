@@ -1,4 +1,4 @@
-<!-- <mat-card>
+<mat-card>
   <mat-card-title>Login</mat-card-title>
   <mat-card-content>
     <form [formGroup]="formUser" (ngSubmit)="submit()">
@@ -9,6 +9,7 @@
             matInput
             placeholder="Email"
             formControlName="email"
+            autocomplete="on"
           />
         </mat-form-field>
         <mat-error *ngIf="formUser.controls['email'].errors?.['required'] && formUser.controls['email'].dirty">
@@ -26,6 +27,7 @@
             matInput
             placeholder="Password"
             formControlName="password"
+            autocomplete="on"
           />
         </mat-form-field>
         <mat-error *ngIf="formUser.controls['password'].errors?.['required'] && formUser.controls['password'].dirty">
@@ -45,8 +47,8 @@
       </div>
     </form>
   </mat-card-content>
-</mat-card> -->
-<form class="container" [formGroup]="formUser" (ngSubmit)="submit()">
+</mat-card>
+<!-- <form class="container" [formGroup]="formUser" (ngSubmit)="submit()">
   <h1 class="login-title">Login</h1>
   <section class="input-box">
     <input type="text" formControlName="email" placeholder="Email"> <i class='bx bxs-user'></i>
@@ -70,5 +72,5 @@
     Don't have an account?
     <a href="#"><b>Register</b></a>
   </h5>
-</form>
+</form> -->
 <app-loading [isLoading]="isLoading"></app-loading>
