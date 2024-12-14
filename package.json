@@ -1,5 +1,5 @@
 {
-  "name": "assets-managements",
+  "name": "natours",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
@@ -24,8 +24,6 @@
     "@fortawesome/fontawesome-free": "^6.5.2",
     "@popperjs/core": "^2.11.8",
     "bootstrap": "^5.3.3",
-    "export-to-csv": "^1.0.1",
-    "json-to-csv-export": "^2.1.1",
     "prettier": "^3.2.5",
     "primeicons": "^7.0.0",
     "primeng": "^14.2.3",
