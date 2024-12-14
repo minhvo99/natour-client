@@ -5,20 +5,48 @@
     "baseUrl": "./",
     "outDir": "./dist/out-tsc",
     "paths": {
-      "@app/*": ["src/app/*"],
-      "@env/*": ["src/environments/*"],
-      "@core/*": ["src/app/core/*"],
-      "@shared/*": ["src/app/shared/*"],
-      "@modules/*": ["src/app/modules/*"],
-      "@services/*": ["src/app/services/*"],
-      "@models/*": ["src/app/models/*"],
-      "@guards/*": ["src/app/guards/*"],
-      "@interceptors/*": ["src/app/interceptors/*"],
-      "@pipes/*": ["src/app/pipes/*"],
-      "@directives/*": ["src/app/directives/*"],
-      "@utils/*": ["src/app/utils/*"],
-      "@config/*": ["src/app/config/*"],
-      "@assets/*": ["src/assets/*"]
+      "@app/*": [
+        "src/app/*"
+      ],
+      "@env/*": [
+        "src/environments/*"
+      ],
+      "@core/*": [
+        "src/app/core/*"
+      ],
+      "@shared/*": [
+        "src/app/shared/*"
+      ],
+      "@modules/*": [
+        "src/app/modules/*"
+      ],
+      "@services/*": [
+        "src/app/services/*"
+      ],
+      "@models/*": [
+        "src/app/models/*"
+      ],
+      "@guards/*": [
+        "src/app/guards/*"
+      ],
+      "@interceptors/*": [
+        "src/app/interceptors/*"
+      ],
+      "@pipes/*": [
+        "src/app/pipes/*"
+      ],
+      "@directives/*": [
+        "src/app/directives/*"
+      ],
+      "@utils/*": [
+        "src/app/utils/*"
+      ],
+      "@config/*": [
+        "src/app/config/*"
+      ],
+      "@assets/*": [
+        "src/assets/*"
+      ]
     },
     "forceConsistentCasingInFileNames": true,
     "strict": true,
@@ -32,12 +60,13 @@
     "experimentalDecorators": true,
     "moduleResolution": "node",
     "importHelpers": true,
-    "target": "es2020",
+    "target": "ES2022",
     "module": "es2020",
     "lib": [
       "es2020",
       "dom"
-    ]
+    ],
+    "useDefineForClassFields": false
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,
