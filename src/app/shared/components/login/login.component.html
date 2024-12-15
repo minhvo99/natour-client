@@ -15,9 +15,6 @@
         <mat-error *ngIf="formUser.controls['email'].errors?.['required'] && formUser.controls['email'].dirty">
           Email is required
         </mat-error>
-        <mat-error *ngIf="formUser.controls['email'].errors?.['email'] && formUser.controls['email'].dirty">
-          Please enter a valid email address
-        </mat-error>
       </p>
 
       <p>
@@ -32,9 +29,6 @@
         </mat-form-field>
         <mat-error *ngIf="formUser.controls['password'].errors?.['required'] && formUser.controls['password'].dirty">
           Password is required
-        </mat-error>
-        <mat-error *ngIf="formUser.controls['password'].errors?.['minlength'] && formUser.controls['password'].dirty">
-          Password must be at least 8 characters
         </mat-error>
       </p>
 

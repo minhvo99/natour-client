@@ -1,4 +1,4 @@
-<!-- <header class="header-area header-sticky">
+<header class="header-area header-sticky">
   <div class="container">
     <div class="row">
       <div class="col-12">
@@ -16,40 +16,17 @@
               >
             </li>
           </ul>
+          <div class="button-group">
             <div class="user-actions" *ngIf="!isLogin">
               <button class="login-btn" (click)="login()">Login</button>
               <button class="signup-btn" (click)="signUp()">Sign Up</button>
             </div>
             <div class="user-actions" *ngIf="isLogin">
-              <button class="logout-btn" (click)="logOut()">Logout</button>
+              <user-info (logOutEvent)="logOut()" [userInfo]="userInfo"></user-info>
             </div>
-          <a class="menu-trigger">
-            <span>Menu</span>
-          </a>
+          </div>
         </nav>
       </div>
     </div>
   </div>
-</header> -->
-<nav class="nav">
-  <div class="container">
-      <div class="logo">
-          <a href="#">Your Logo</a>
-      </div>
-      <div id="mainListDiv" class="main_list">
-          <ul class="navlinks" *ngFor="let item of menus">
-              <li> <a
-                class="{{ item.label }}"
-                *ngIf="item.isActive"
-                (click)="onNavigate(item.label)"
-                >{{ item.name }}</a
-              ></li>
-          </ul>
-      </div>
-      <span class="navTrigger">
-          <i></i>
-          <i></i>
-          <i></i>
-      </span>
-  </div>
-</nav>
+</header>

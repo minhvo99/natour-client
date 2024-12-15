@@ -20,18 +20,14 @@ export class LoginComponent implements OnInit {
     private formBuilder: FormBuilder,
     private authService: AuthService,
     private router: Router,
-    private route: ActivatedRoute
-  ) {
-  }
+    private route: ActivatedRoute,
+  ) {}
 
   ngOnInit(): void {
     this.returnUrl = this.route.snapshot.queryParams['returnUrl'];
     this.formUser = this.formBuilder.group({
-      email: ['', Validators.compose([Validators.required, Validators.email])],
-      password: [
-        '',
-        Validators.compose([Validators.required, Validators.minLength(8)]),
-      ],
+      email: ['', Validators.required],
+      password: ['', Validators.required],
     });
   }
   ngOnDestroy(): void {

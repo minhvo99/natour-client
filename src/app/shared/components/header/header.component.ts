@@ -11,6 +11,7 @@ import { AuthService } from '@app/core/services/auth.service';
 export class HeaderComponent implements OnInit {
   isLogin = false;
   previousUrl: string | null = null;
+  userInfo!: any;
 
   menus: Option[] = [
     { id: 'home', name: 'Home', label: 'home', isActive: true },
@@ -22,12 +23,10 @@ export class HeaderComponent implements OnInit {
   constructor(
     private authService: AuthService,
     private router: Router,
-  ) {
-
-  }
+  ) {}
 
   ngOnInit(): void {
-    this.router.events.subscribe(event => {
+    this.router.events.subscribe((event) => {
       if (event instanceof NavigationStart) {
         this.previousUrl = event.url;
       }
@@ -38,12 +37,20 @@ export class HeaderComponent implements OnInit {
     }
 
     if (this.isLogin) {
-      this.menus.push({ id: 'booking', name: 'Booking', label: 'booking', isActive: true });
+      this.menus.push({
+        id: 'booking',
+        name: 'Booking',
+        label: 'booking',
+        isActive: true,
+      });
+      this.userInfo = JSON.parse(localStorage.getItem('JWT_Token')!).user;
     }
   }
 
   login() {
-    this.router.navigate(['/login'],  { queryParams: { returnUrl: this.previousUrl } });
+    this.router.navigate(['/login'], {
+      queryParams: { returnUrl: this.previousUrl },
+    });
   }
 
   signUp() {
@@ -54,8 +61,9 @@ export class HeaderComponent implements OnInit {
     this.router.navigate([option]);
   }
 
-  logOut () {
+  logOut() {
     this.authService.logout();
     this.isLogin = false;
+    this.menus.pop();
   }
 }

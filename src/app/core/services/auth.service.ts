@@ -26,9 +26,8 @@ export class AuthService {
 
   login (email: string, password: string): Observable<any> {
     const body = { email, password };
-    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
 
-    return this.http.post<any>(`${this.baseUrl}/log-in`, body, { headers }).pipe(
+    return this.http.post<any>(`${this.baseUrl}/log-in`, body).pipe(
       map(res => {
         localStorage.setItem('JWT_Token', JSON.stringify(res.data));
         this.userRoles = res.roles;
@@ -70,5 +69,15 @@ export class AuthService {
 
   isGuide(): boolean {
     return this.role === ROLE.GUIDE;
+  }
+
+  getUserInfo(): Observable<any> {
+    return this.http.get<any>(`${this.baseUrl}/users/me`).pipe(
+      catchError(err => {
+        this.logout();
+        this.router.navigate(['/login']);
+        return of(null);
+      })
+    );
   }
 }

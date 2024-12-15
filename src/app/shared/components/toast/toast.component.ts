@@ -1,11 +1,4 @@
 import { Component } from '@angular/core';
-import {
-  animate,
-  state,
-  style,
-  transition,
-  trigger,
-} from '@angular/animations';
 import { ToastService } from './toast-service.service';
 import { MessageService } from 'primeng/api';
 
