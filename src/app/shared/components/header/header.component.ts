@@ -33,7 +33,7 @@ export class HeaderComponent implements OnInit {
     });
     const user = this.authService.userValue;
     if (user) {
-      this.isLogin = user.user && user?.token;
+      this.isLogin = user && user?.token;
     }
 
     if (this.isLogin) {
@@ -43,7 +43,11 @@ export class HeaderComponent implements OnInit {
         label: 'booking',
         isActive: true,
       });
-      this.userInfo = JSON.parse(localStorage.getItem('JWT_Token')!).user;
+      this.getCurrentUser().subscribe({
+        next: (res) => {
+          this.userInfo = res;
+        }
+      })
     }
   }
 
@@ -51,6 +55,10 @@ export class HeaderComponent implements OnInit {
     this.router.navigate(['/login'], {
       queryParams: { returnUrl: this.previousUrl },
     });
+  }
+
+  getCurrentUser() {
+    return this.authService.getUserInfo();
   }
 
   signUp() {

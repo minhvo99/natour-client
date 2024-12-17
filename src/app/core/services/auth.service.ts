@@ -7,7 +7,7 @@ import { User } from '../models/user';
 import { Router } from '@angular/router';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AuthService {
   private baseUrl = `${environment.api}/api/v1`;
@@ -15,42 +15,54 @@ export class AuthService {
   private userSubject!: BehaviorSubject<User | null | any>;
   public user!: Observable<User | null | any>;
 
-  constructor(private http: HttpClient, private router: Router) {
-    this.userSubject = new BehaviorSubject(JSON.parse(localStorage.getItem('JWT_Token')!));
+  constructor(
+    private http: HttpClient,
+    private router: Router,
+  ) {
+    this.userSubject = new BehaviorSubject(
+      JSON.parse(localStorage.getItem('JWT_Token')!),
+    );
     this.user = this.userSubject.asObservable();
   }
 
   public get userValue() {
     return this.userSubject.value;
-}
+  }
 
-  login (email: string, password: string): Observable<any> {
+  login(email: string, password: string): Observable<any> {
     const body = { email, password };
 
     return this.http.post<any>(`${this.baseUrl}/log-in`, body).pipe(
-      map(res => {
+      map((res) => {
         localStorage.setItem('JWT_Token', JSON.stringify(res.data));
         this.userRoles = res.roles;
         this.userSubject.next(res.data);
         return res;
       }),
-    )
+    );
   }
 
-  register (user: { name: string, email: string, password: string, passWordConfirm: string }): Observable<any> {
+  register(user: {
+    name: string;
+    email: string;
+    password: string;
+    passWordConfirm: string;
+  }): Observable<any> {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
 
-    return this.http.post<any>(`${this.baseUrl}/sign-up`, user, { headers }).pipe(
-      map(res => {
-        localStorage.setItem('JWT_Token', JSON.stringify(res.data));
-        this.userRoles = res.roles;
-        this.userSubject.next(res.data);
-        return res;
-      }),
-    )
+    return this.http
+      .post<any>(`${this.baseUrl}/sign-up`, user, { headers })
+      .pipe(
+        map((res) => {
+          localStorage.setItem('JWT_Token', JSON.stringify(res.data));
+          this.userRoles = res.roles;
+          this.userSubject.next(res.data);
+          return res;
+        }),
+      );
   }
 
-  logout (): void {
+  logout(): void {
     localStorage.removeItem('JWT_Token');
     this.userSubject.next(null);
   }
@@ -72,12 +84,13 @@ export class AuthService {
   }
 
   getUserInfo(): Observable<any> {
-    return this.http.get<any>(`${this.baseUrl}/users/me`).pipe(
-      catchError(err => {
+    return this.http.get<any>(`${this.baseUrl}/user/me`).pipe(
+      map((res) => res.data),
+      catchError((err) => {
         this.logout();
-        this.router.navigate(['/login']);
+        this.router.navigate(['/']);
         return of(null);
-      })
+      }),
     );
   }
 }

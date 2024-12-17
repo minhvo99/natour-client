@@ -19,33 +19,6 @@ export class TourDetaiComponent implements OnInit {
   isLoading = false;
   isLogined = false;
   reviewForm!: FormGroup;
-  stars = [
-    {
-      id: 1,
-      icon: 'star',
-      class: 'star-gray star-hover star',
-    },
-    {
-      id: 2,
-      icon: 'star',
-      class: 'star-gray star-hover star',
-    },
-    {
-      id: 3,
-      icon: 'star',
-      class: 'star-gray star-hover star',
-    },
-    {
-      id: 4,
-      icon: 'star',
-      class: 'star-gray star-hover star',
-    },
-    {
-      id: 5,
-      icon: 'star',
-      class: 'star-gray star-hover star',
-    },
-  ];
 
   constructor(
     private route: ActivatedRoute,
@@ -88,28 +61,6 @@ export class TourDetaiComponent implements OnInit {
       });
   }
 
-  selectStar(value: any): void {
-    if (this.selectedRating) {
-      this.stars.filter((star) => {
-        if (star.id <= value) {
-          star.class = 'star-gold star';
-        } else {
-          star.class = 'star-gray star';
-        }
-      });
-    }
-
-    this.selectedRating = value;
-  }
-
-  getStars(rating: number): string[] {
-    const stars = [];
-    for (let i = 1; i <= 5; i++) {
-      stars.push(i <= rating ? 'star' : 'star_border');
-    }
-    return stars;
-  }
-
   get selectedRating() {
     return this.reviewForm.get('rating')?.value;
   }
@@ -130,9 +81,6 @@ export class TourDetaiComponent implements OnInit {
 
   onSubmitReview() {
     const { review, rating } = this.reviewForm.value;
-    this.stars.forEach((star) => {
-      star.class = 'star-gray star';
-    });
     const tourId = this.tour.id;
     this.tourService
       .reviewTour(tourId, { review, rating })

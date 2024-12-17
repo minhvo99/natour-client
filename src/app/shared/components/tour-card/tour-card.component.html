@@ -4,24 +4,32 @@
     <div class="card__image-title">{{ tour.name }}</div>
   </div>
   <div class="card__content">
-    <div class="card__content-subtitle">{{tour.difficulty | titlecase}} - {{tour.duration || ''}} DAY
-      TOUR</div>
+    <div class="card__content-subtitle">
+      {{ tour.difficulty | titlecase }} - {{ tour.duration || '' }} DAY TOUR
+    </div>
     <div class="card__content-description">
-      {{tour.summary}}
+      {{ tour.summary }}
     </div>
     <div class="card__content-info">
-      <span>📍 {{ tour.startLocation.description || '' }}</span>
-      <span>📅 {{ tour.startDates[0] | date:'MMMM d, y' }}</span>
+      <span>📍 {{ tour.startLocation?.description || '' }}</span>
+      <span>📅 {{ tour.startDates?.[0] | date: 'MMMM d, y' }}</span>
       <span>👤 {{ tour.maxGroupSize }} people</span>
     </div>
     <div class="card__content-price">
       <div class="price-details">
-        <span><b>{{tour.price | currency}}</b>/person</span>
+        <span
+          ><b>{{ tour.price | currency }}</b
+          >/person</span
+        >
         <div class="rating">
-          <span>⭐ {{ tour.ratingsAverage }}</span> rating ({{ tour.ratingsQuantity }})
+          <span>⭐ {{ tour.ratingsAverage }}</span> rating ({{
+            tour.ratingsQuantity
+          }})
         </div>
       </div>
-      <a (click)="onNavigateToTourDetail(tour.id)" class="details-btn">DETAILS</a>
+      <a (click)="onNavigateToTourDetail(tour.id)" class="details-btn"
+        >DETAILS</a
+      >
     </div>
   </div>
 </div>

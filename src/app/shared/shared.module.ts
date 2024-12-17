@@ -30,6 +30,7 @@ import { UserInfoComponent } from './components/user-info/user-info.component';
 import { FilterTourComponent } from './components/filter-tour/filter-tour.component';
 import { MultiSelectModule } from 'primeng/multiselect';
 import { SkeletonModule } from 'primeng/skeleton';
+import { RatingModule } from 'primeng/rating';
 
 const declarations = [
   HeaderComponent,
@@ -65,6 +66,7 @@ const imports = [
   SidebarModule,
   MultiSelectModule,
   SkeletonModule,
+  RatingModule,
 ];
 
 const importsPrimeNg = [ToastModule];

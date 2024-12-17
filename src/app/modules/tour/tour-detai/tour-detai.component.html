@@ -70,8 +70,8 @@
               <span>{{ review.user.name }}</span>
             </div>
             <div class="review-item-header-right">
-              <span *ngFor="let star of getStars(review.rating)">
-                <mat-icon>{{ star }}</mat-icon>
+              <span>
+                <p-rating  [(ngModel)]="review.rating" [readonly]="true" [cancel]="false"/>
               </span>
               <span>{{ review.createdAt | date: 'dd/MM/yyyy' }}</span>
             </div>
@@ -91,12 +91,7 @@
         <h4>Add your review</h4>
         <form (submit)="onSubmitReview()" [formGroup]="reviewForm ">
           <div class="form-group">
-            <label for="rating">Rating</label>
-            <div *ngFor="let star of stars" [ngClass]="[star.class]" (click)="selectStar(star.id)">
-              <mat-icon>{{star.icon}}</mat-icon>
-          </div>
-          </div>
-          <div class="form-group">
+            <p-rating formControlName="rating" [cancel]="false"/>
             <label for="review">Review</label>
             <textarea class="form-control" id="review" name="review" formControlName="review"></textarea>
           </div>

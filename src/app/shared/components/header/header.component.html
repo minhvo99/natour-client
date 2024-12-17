@@ -16,7 +16,7 @@
               <p-button severity="secondary" [rounded]="true" [raised]="true" label="Log in" (click)="login()" />
               <p-button severity="secondary" [rounded]="true" [raised]="true" label="Sign up" (click)="signUp()" />
           </div>
-          <div class="card flex justify-content-center">
+          <div class="flex justify-content-center">
         </div>
             <div class="user-actions" *ngIf="isLogin">
               <user-info (logOutEvent)="logOut()" [userInfo]="userInfo"></user-info>
