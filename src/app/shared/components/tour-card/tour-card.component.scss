@@ -27,24 +27,6 @@ $font-family: "Arial", sans-serif;
   }
 }
 
-// Global Reset
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-body {
-  background-color: $secondary-color;
-  font-family: $font-family;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-  padding: 1rem;
-}
-
-// Card Container
 .card {
   background-color: #fff;
   width: 320px;
