@@ -1,46 +1,34 @@
-<div class="my-4 tour-card" (click)="onNavigateToTourDetail(tour.id)">
-  <div class="tour-card-header">
-    <div class="image-cover">
-      <img  [src]="tour.imageCover" [alt]="tour.name">
-    </div>
-    <h3 class="tour-name">
-      {{tour.name}}
-    </h3>
-    <div class="tour-price flex flex-column">
-      <span class="old">{{tour.price | currency}}</span>
-      <span class="new">{{tour.price | currency}}</span>
-    </div>
-    <p class="tour-summary">
+<div class="card my-4" (click)="onNavigateToTourDetail(tour.id)">
+  <!-- Image Section -->
+  <div class="card__image">
+    <img src="../../assets/images/banner-01.jpg" [alt]="tour.name" />
+    <div class="card__image-title">{{ tour.name }}</div>
+  </div>
+
+  <!-- Content Section -->
+  <div class="card__content" >
+    <div class="card__content-subtitle">{{tour.difficulty | titlecase}} - {{tour.duration || ''}} DAY
+      TOUR</div>
+    <div class="card__content-description">
       {{tour.summary}}
-    </p>
-  </div>
-  <div class="tour-card-tag">
-    <span *ngIf="true">New</span>
-    <span *ngIf="true">Hot</span>
-  </div>
-  <div class="tour-card-body">
-    <ul>
-      <li>
-        <span class="label">Type:</span>
-        <span class="value">{{tour.difficulty | titlecase}}</span>
-      </li>
-      <li>
-        <span class="label">Rating average:</span>
-        <span class="value">{{tour.ratingsAverage}}</span>
-      </li>
-      <li>
-        <span class="label">Duration:</span>
-        <span class="value">{{tour.duration || ''}}</span>
-      </li>
-      <li>
-        <span class="label">Guide:</span>
-        <span class="value" *ngFor="let guide of tour.guides">{{ guide.name }}</span>
-      </li>
-    </ul>
-  </div>
-  <div class="tour-card-footer">
-    <div class="main-button">
-      <a >Booking now</a>
+    </div>
+
+    <!-- Information Section -->
+    <div class="card__content-info">
+      <span>📍 {{ tour.startLocation.description || '' }}</span>
+      <span>📅 {{ tour.startDates[0] | date:'MMMM d, y' }}</span>
+      <span>👤 {{ tour.maxGroupSize }} people</span>
+    </div>
+
+    <!-- Price and Button -->
+    <div class="card__content-price">
+      <div class="price-details">
+        <span><b>{{tour.price | currency}}</b> per person</span>
+        <div class="rating">
+          <span>⭐ {{ tour.ratingsAverage }}</span> rating ({{ tour.ratingsQuantity }})
+        </div>
+      </div>
+      <a (click)="onNavigateToTourDetail(tour.id)" class="details-btn">DETAILS</a>
     </div>
   </div>
 </div>

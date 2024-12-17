@@ -27,6 +27,8 @@ import { TourCardComponent } from './components/tour-card/tour-card.component';
 import {AvatarModule} from 'primeng/avatar';
 import { SidebarModule } from 'primeng/sidebar';
 import { UserInfoComponent } from './components/user-info/user-info.component';
+import { FilterTourComponent } from './components/filter-tour/filter-tour.component';
+import { MultiSelectModule } from 'primeng/multiselect';
 
 const declarations = [
   HeaderComponent,
@@ -35,7 +37,8 @@ const declarations = [
   LoginComponent,
   ToastComponent,
   TourCardComponent,
-  UserInfoComponent
+  UserInfoComponent,
+  FilterTourComponent
 ];
 const imports = [
   CommonModule,
@@ -59,6 +62,7 @@ const imports = [
   AvatarModule,
   MatCardModule,
   SidebarModule,
+  MultiSelectModule,
 ];
 
 const importsPrimeNg = [ToastModule];

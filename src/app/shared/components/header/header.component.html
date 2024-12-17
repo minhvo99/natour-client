@@ -8,19 +8,16 @@
           </a>
           <ul class="nav" *ngFor="let item of menus">
             <li>
-              <a
-                class="{{ item.label }}"
-                *ngIf="item.isActive"
-                (click)="onNavigate(item.label)"
-                >{{ item.name }}</a
-              >
+              <a class="{{ item.label }}" *ngIf="item.isActive" (click)="onNavigate(item.label)">{{ item.name }}</a>
             </li>
           </ul>
           <div class="button-group">
             <div class="user-actions" *ngIf="!isLogin">
-              <button class="login-btn" (click)="login()">Login</button>
-              <button class="signup-btn" (click)="signUp()">Sign Up</button>
-            </div>
+              <p-button severity="secondary" [rounded]="true" [raised]="true" label="Log in" (click)="login()" />
+              <p-button severity="secondary" [rounded]="true" [raised]="true" label="Sign up" (click)="signUp()" />
+          </div>
+          <div class="card flex justify-content-center">
+        </div>
             <div class="user-actions" *ngIf="isLogin">
               <user-info (logOutEvent)="logOut()" [userInfo]="userInfo"></user-info>
             </div>
