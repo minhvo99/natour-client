@@ -5,11 +5,13 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthGuardServiceGuard } from './guards/auth-guard-service.guard';
 import { JWTInterceptor } from './interceptors/jwt.interceptor';
 import { ErrorInterceptor } from './interceptors/error.interceptor';
+import { AdminGuard } from './guards/admin-guard.guard';
 
 @NgModule({
   imports: [CommonModule],
   providers: [
     AuthGuardServiceGuard,
+    AdminGuard,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: JWTInterceptor,

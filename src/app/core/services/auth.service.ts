@@ -35,7 +35,8 @@ export class AuthService {
     return this.http.post<any>(`${this.baseUrl}/log-in`, body).pipe(
       map((res) => {
         localStorage.setItem('JWT_Token', JSON.stringify(res.data));
-        this.userRoles = res.roles;
+        this.userRoles = res.data.role;
+        console.log(this.userRoles);
         this.userSubject.next(res.data);
         return res;
       }),
@@ -55,7 +56,7 @@ export class AuthService {
       .pipe(
         map((res) => {
           localStorage.setItem('JWT_Token', JSON.stringify(res.data));
-          this.userRoles = res.roles;
+          this.userRoles = res.data.role;
           this.userSubject.next(res.data);
           return res;
         }),
@@ -67,20 +68,21 @@ export class AuthService {
     this.userSubject.next(null);
   }
 
-  get role(): string {
-    return this.userRoles;
-  }
-
   isAdmin(): boolean {
-    return this.role === ROLE.ADMIN;
+    return this.getCurrentRole() === ROLE.ADMIN;
   }
 
   isLeadGuide(): boolean {
-    return this.role === ROLE.LEAD_GUIDE;
+    return this.getCurrentRole() === ROLE.LEAD_GUIDE;
   }
 
   isGuide(): boolean {
-    return this.role === ROLE.GUIDE;
+    return this.getCurrentRole() === ROLE.GUIDE;
+  }
+
+  private getCurrentRole(): string {
+    const user = this.userSubject.value;
+    return user?.role || '';
   }
 
   getUserInfo(): Observable<any> {

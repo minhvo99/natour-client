@@ -31,6 +31,9 @@ import { FilterTourComponent } from './components/filter-tour/filter-tour.compon
 import { MultiSelectModule } from 'primeng/multiselect';
 import { SkeletonModule } from 'primeng/skeleton';
 import { RatingModule } from 'primeng/rating';
+import { CheckboxModule } from 'primeng/checkbox';
+import { PasswordModule } from 'primeng/password';
+import { InputTextModule } from 'primeng/inputtext';
 
 const declarations = [
   HeaderComponent,
@@ -67,6 +70,9 @@ const imports = [
   MultiSelectModule,
   SkeletonModule,
   RatingModule,
+  CheckboxModule,
+  PasswordModule,
+  InputTextModule
 ];
 
 const importsPrimeNg = [ToastModule];

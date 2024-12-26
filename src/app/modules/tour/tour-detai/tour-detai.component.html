@@ -85,7 +85,7 @@
   </div>
 </div>
 <div class="row">
-  <ng-container *ngIf="isLogined; else elseTemplate">
+  <ng-container *ngIf="isLogined; else notLogin">
     <div class="col-12">
       <div class="review-form">
         <h4>Add your review</h4>
@@ -100,7 +100,7 @@
       </div>
     </div>
   </ng-container>
-  <ng-template #elseTemplate>
+  <ng-template #notLogin>
     <h3>Log in to page and add your review</h3>
   </ng-template>
 

@@ -1,4 +1,4 @@
-<div class="card my-4" (click)="onNavigateToTourDetail(tour.id)">
+<!-- <div class="card my-4" (click)="onNavigateToTourDetail(tour.id)">
   <div class="card__image">
     <img src="../../assets/images/banner-01.jpg" [alt]="tour.name" />
     <div class="card__image-title">{{ tour.name }}</div>
@@ -31,5 +31,31 @@
         >DETAILS</a
       >
     </div>
+  </div>
+</div> -->
+
+<div class="card my-4" (click)="onNavigateToTourDetail(tour.id)">
+  <div class="card__header">
+    <img src="../../assets/images/banner-01.jpg" [alt]="tour.name">
+    <div class="card__title">{{ tour.name }}</div>
+  </div>
+  <div class="card__content">
+    <div class="card__subheading">  {{ tour.difficulty | titlecase }} - {{ tour.duration || '' }} DAY TOUR</div>
+    <p class="card__description">   {{ tour.summary }}</p>
+    <div class="card__details">
+      <div><i class="fas fa-map-marker-alt"></i> {{ tour.startLocation?.description || '' }}</div>
+      <div><i class="far fa-calendar-alt"></i> {{ tour.startDates?.[0] | date: 'MMMM d, y' }}</div>
+      <div><i class="fas fa-flag"></i> 4 stops</div>
+      <div><i class="fas fa-user-friends"></i> {{ tour.maxGroupSize }} people</div>
+    </div>
+  </div>
+  <div class="card__footer">
+    <div>
+      <p>{{ tour.price | currency }} <span>per person</span></p>
+      <div class="rating"><strong>⭐ {{ tour.ratingsAverage }}</strong> rating ({{
+        tour.ratingsQuantity
+      }})</div>
+    </div>
+    <a (click)="onNavigateToTourDetail(tour.id)" class="btn">DETAILS</a>
   </div>
 </div>

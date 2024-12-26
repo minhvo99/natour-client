@@ -1,158 +1,126 @@
-// Variables
-$primary-color: #6fcf97;
-$secondary-color: #f7f7f7;
-$shadow-color: rgba(0, 0, 0, 0.1);
-$text-dark: #333;
-$text-light: #777;
-$border-color: #e0e0e0;
-$font-family: "Arial", sans-serif;
-
-// Mixins
-@mixin flex-center($direction: row, $gap: 0) {
-  display: flex;
-  flex-direction: $direction;
-  align-items: center;
-  gap: $gap;
-}
-
-@mixin responsive($size) {
-  @if $size == tablet {
-    @media (max-width: 1024px) {
-      @content;
-    }
-  } @else if $size == mobile {
-    @media (max-width: 768px) {
-      @content;
-    }
-  }
-}
-
 .card {
+  width: 350px;
   background-color: #fff;
-  width: 320px;
-  border-radius: 12px;
+  border-radius: 10px;
   overflow: hidden;
-  border: 1px solid $border-color; // Add border
-  box-shadow: 0 10px 15px $shadow-color;
-  transition: all 0.3s ease;
-
-  &:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 15px 25px $shadow-color;
-  }
-
-  // Image Section
-  &__image {
-    position: relative;
-    width: 100%;
-    height: 200px;
-
-    img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      filter: brightness(60%);
-    }
-
-    &-title {
-      position: absolute;
-      bottom: 10px;
-      left: 15px;
-      color: white;
-      background-color: rgba(111, 207, 151, 0.85);
-      padding: 0.3rem 0.8rem;
-      font-size: 1.4rem;
-      font-weight: 700;
-      border-radius: 5px;
-    }
-  }
-
-  // Content Section
-  &__content {
-    padding: 1.5rem;
-
-    &-subtitle {
-      font-size: 1rem;
-      font-weight: 700;
-      color: $text-dark;
-      margin-bottom: 0.5rem;
-    }
-
-    &-description {
-      font-size: 0.9rem;
-      color: $text-light;
-      margin-bottom: 1rem;
-      font-style: italic;
-    }
-
-    &-info {
-      @include flex-center(row, 1rem);
-      flex-wrap: wrap;
-      margin-bottom: 1rem;
-
-      span {
-        @include flex-center(row, 0.3rem);
-        color: $text-light;
-        font-size: 0.85rem;
-      }
-    }
-
-    &-price {
-      border-top: 1px solid $border-color; // Add border above price
-      padding-top: 1rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      font-size: 1rem;
-      font-weight: 700;
-
-      .price-details {
-        color: $text-dark;
-
-        b {
-          font-weight: 700;
-        }
-
-        .rating {
-          display: block;
-          font-size: 0.9rem;
-          color: $text-light;
-          font-weight: 400;
-
-          span {
-            font-weight: 700;
-            color: $text-dark;
-          }
-        }
-      }
-
-      .details-btn {
-        background-color: $primary-color;
-        color: white;
-        padding: 0.5rem 1.2rem;
-        border-radius: 50px;
-        text-decoration: none;
-        font-size: 0.9rem;
-        font-weight: 600;
-        transition: background-color 0.3s ease;
-
-        &:hover {
-          background-color: darken($primary-color, 10%);
-        }
-      }
-    }
-  }
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-// Responsive Design
-@include responsive(tablet) {
-  .card {
-    width: 90%;
-  }
+.card:hover {
+  transform: translateY(-10px) scale(1.03);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
 }
 
-@include responsive(mobile) {
-  .card {
-    width: 100%;
-  }
+/* Card Header */
+.card__header {
+  position: relative;
+  height: 200px;
+}
+
+.card__header img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.card__header::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to right bottom, rgba(126, 213, 111, 0.85), rgba(40, 180, 133, 0.85));
+  z-index: 1;
+}
+
+.card__title {
+  position: absolute;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  z-index: 2;
+  background-color: rgba(83, 176, 130, 0.9);
+  color: #fff;
+  font-size: 1.3rem;
+  font-weight: 600;
+  padding: 0.5rem 1rem;
+}
+
+/* Card Content */
+.card__content {
+  padding: 1.5rem;
+}
+
+.card__subheading {
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: #333;
+  margin-bottom: 0.5rem;
+}
+
+.card__description {
+  font-style: italic;
+  color: #777;
+  line-height: 1.5;
+  margin-bottom: 1rem;
+}
+
+.card__details {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  font-size: 0.9rem;
+  color: #777;
+}
+
+.card__details i {
+  color: #54c394;
+  margin-right: 0.5rem;
+}
+
+/* Card Footer */
+.card__footer {
+  padding: 1rem 1.5rem;
+  border-top: 1px solid #eee;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.card__footer p {
+  font-weight: 600;
+  color: #333;
+}
+
+.card__footer span {
+  font-size: 0.9rem;
+  color: #777;
+}
+
+.rating {
+  margin-top: 0.3rem;
+  color: #777;
+  font-size: 0.9rem;
+}
+
+.rating strong {
+  color: #333;
+  font-weight: 600;
+}
+
+.btn {
+  background-color: #54c394;
+  color: #fff;
+  font-weight: 600;
+  padding: 0.5rem 1.5rem;
+  text-decoration: none;
+  border-radius: 50px;
+  font-size: 0.9rem;
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.btn:hover {
+  background-color: #3aa47c;
+  transform: scale(1.1);
 }
