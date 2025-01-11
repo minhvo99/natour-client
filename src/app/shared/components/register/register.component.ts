@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, ValidatorFn, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from '@app/core/services/auth.service';
 import { Subject, takeUntil } from 'rxjs';
 
@@ -13,14 +13,17 @@ export class RegisterComponent implements OnInit {
   registerForm!: FormGroup;
   isLoading = false;
   $destroy = new Subject<void>();
+  returnUrl: string | null = null;
 
   constructor(
     private formBuilder: FormBuilder,
     private authService: AuthService,
-    private router: Router
+    private router: Router,
+    private route: ActivatedRoute,
   ) {}
 
   ngOnInit(): void {
+    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || 'home';
     const PASSWORD_PATTERN = /^(?=.*[!@#$%^&*]+)[a-z0-9!@#$%^&*]{8,32}$/;
     this.registerForm = this.formBuilder.group({
       name: ['',Validators.required],
@@ -65,10 +68,14 @@ export class RegisterComponent implements OnInit {
           this.isLoading = false;
         },
         complete: () => {
-          this.router.navigate(['/tour']);
+          this.router.navigateByUrl(this.returnUrl!);
           this.registerForm.reset();
         }
       });
+  }
+
+  onNavigateToLogin() :void {
+    this.router.navigateByUrl('login');
   }
 
   ngOnDestroy(): void {

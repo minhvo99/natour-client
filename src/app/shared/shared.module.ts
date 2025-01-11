@@ -4,19 +4,6 @@ import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { LoadingComponent } from './components/loading/loading.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { MatToolbarModule } from '@angular/material/toolbar';
-import { MatIconModule } from '@angular/material/icon';
-import {MatButtonModule} from '@angular/material/button';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatInputModule } from '@angular/material/input';
-import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-import { MatTableModule } from '@angular/material/table';
-import { MatMenuModule } from '@angular/material/menu';
-import { MatPaginatorModule } from '@angular/material/paginator';
-import { MatTooltipModule } from '@angular/material/tooltip';
-import { MatDialogModule } from '@angular/material/dialog';
-import {MatCardModule} from '@angular/material/card';
-
 import { LoginComponent } from './components/login/login.component';
 import { ToastComponent } from './components/toast/toast.component';
 import { ToastModule } from 'primeng/toast';
@@ -34,6 +21,10 @@ import { RatingModule } from 'primeng/rating';
 import { CheckboxModule } from 'primeng/checkbox';
 import { PasswordModule } from 'primeng/password';
 import { InputTextModule } from 'primeng/inputtext';
+import { DividerModule } from 'primeng/divider';
+import { ProgressSpinnerModule } from 'primeng/progressspinner';
+import { RippleModule } from 'primeng/ripple';
+import { TopbarComponent } from './components/topbar/topbar.component';
 
 const declarations = [
   HeaderComponent,
@@ -43,43 +34,35 @@ const declarations = [
   ToastComponent,
   TourCardComponent,
   UserInfoComponent,
-  FilterTourComponent
+  FilterTourComponent,
+  TopbarComponent
 ];
 const imports = [
   CommonModule,
   FormsModule,
   ReactiveFormsModule,
-  MatToolbarModule,
-  MatIconModule,
-  MatButtonModule,
-  MatFormFieldModule,
-  MatInputModule,
-  MatProgressSpinnerModule,
-  MatTableModule,
-  MatMenuModule,
-  MatPaginatorModule,
-  MatTooltipModule,
-  MatDialogModule,
   CardModule,
   CarouselModule,
   CardModule,
   ButtonModule,
   AvatarModule,
-  MatCardModule,
   SidebarModule,
   MultiSelectModule,
   SkeletonModule,
   RatingModule,
   CheckboxModule,
   PasswordModule,
-  InputTextModule
+  InputTextModule,
+  DividerModule,
+  ProgressSpinnerModule,
+  RippleModule,
+  ToastModule
 ];
 
-const importsPrimeNg = [ToastModule];
 
 @NgModule({
-  imports: [...imports, ...importsPrimeNg],
+  imports: [...imports,],
   declarations: [...declarations],
-  exports: [...imports, ...declarations, ...importsPrimeNg],
+  exports: [...imports, ...declarations,],
 })
 export class SharedModule {}

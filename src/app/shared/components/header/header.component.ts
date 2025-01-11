@@ -49,6 +49,14 @@ export class HeaderComponent implements OnInit {
         }
       })
     }
+    if (this.authService.isAdmin()) {
+      this.menus.push({
+        id: 'admin',
+        name: 'Admin Portal',
+        label: 'admin',
+        isActive: true,
+      });
+    }
   }
 
   login() {
@@ -72,6 +80,6 @@ export class HeaderComponent implements OnInit {
   logOut() {
     this.authService.logout();
     this.isLogin = false;
-    this.menus.pop();
+    this.menus.slice(0, 4);
   }
 }

@@ -36,7 +36,6 @@ export class AuthService {
       map((res) => {
         localStorage.setItem('JWT_Token', JSON.stringify(res.data));
         this.userRoles = res.data.role;
-        console.log(this.userRoles);
         this.userSubject.next(res.data);
         return res;
       }),

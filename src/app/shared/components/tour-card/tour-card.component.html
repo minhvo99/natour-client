@@ -1,55 +1,19 @@
-<!-- <div class="card my-4" (click)="onNavigateToTourDetail(tour.id)">
-  <div class="card__image">
-    <img src="../../assets/images/banner-01.jpg" [alt]="tour.name" />
-    <div class="card__image-title">{{ tour.name }}</div>
-  </div>
-  <div class="card__content">
-    <div class="card__content-subtitle">
-      {{ tour.difficulty | titlecase }} - {{ tour.duration || '' }} DAY TOUR
-    </div>
-    <div class="card__content-description">
-      {{ tour.summary }}
-    </div>
-    <div class="card__content-info">
-      <span>📍 {{ tour.startLocation?.description || '' }}</span>
-      <span>📅 {{ tour.startDates?.[0] | date: 'MMMM d, y' }}</span>
-      <span>👤 {{ tour.maxGroupSize }} people</span>
-    </div>
-    <div class="card__content-price">
-      <div class="price-details">
-        <span
-          ><b>{{ tour.price | currency }}</b
-          >/person</span
-        >
-        <div class="rating">
-          <span>⭐ {{ tour.ratingsAverage }}</span> rating ({{
-            tour.ratingsQuantity
-          }})
-        </div>
-      </div>
-      <a (click)="onNavigateToTourDetail(tour.id)" class="details-btn"
-        >DETAILS</a
-      >
-    </div>
-  </div>
-</div> -->
-
-<div class="card my-4" (click)="onNavigateToTourDetail(tour.id)">
-  <div class="card__header">
+<div class="item my-4" (click)="onNavigateToTourDetail(tour.id)">
+  <div class="item__header">
     <img src="../../assets/images/banner-01.jpg" [alt]="tour.name">
-    <div class="card__title">{{ tour.name }}</div>
+    <div class="item__title">{{ tour.name }}</div>
   </div>
-  <div class="card__content">
-    <div class="card__subheading">  {{ tour.difficulty | titlecase }} - {{ tour.duration || '' }} DAY TOUR</div>
-    <p class="card__description">   {{ tour.summary }}</p>
-    <div class="card__details">
+  <div class="item__content">
+    <div class="item__subheading">  {{ tour.difficulty | titlecase }} - {{ tour.duration || '' }} DAY TOUR</div>
+    <p class="item__description">   {{ tour.summary }}</p>
+    <div class="item__details">
       <div><i class="fas fa-map-marker-alt"></i> {{ tour.startLocation?.description || '' }}</div>
       <div><i class="far fa-calendar-alt"></i> {{ tour.startDates?.[0] | date: 'MMMM d, y' }}</div>
       <div><i class="fas fa-flag"></i> 4 stops</div>
       <div><i class="fas fa-user-friends"></i> {{ tour.maxGroupSize }} people</div>
     </div>
   </div>
-  <div class="card__footer">
+  <div class="item__footer">
     <div>
       <p>{{ tour.price | currency }} <span>per person</span></p>
       <div class="rating"><strong>⭐ {{ tour.ratingsAverage }}</strong> rating ({{

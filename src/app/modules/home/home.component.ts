@@ -4,6 +4,8 @@ import { TOAST_STATE } from '@app/shared/modal/toast';
 import { Tour } from '@app/shared/modal/tour';
 import { Subject, Observable, takeUntil } from 'rxjs';
 import { TourService } from '../tour/services/tour.service';
+import { LayoutService } from '../admin/services/layout.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -19,6 +21,7 @@ export class HomeComponent implements OnInit {
   constructor(
     private tourService: TourService,
     private toast: ToastService,
+    public layoutService: LayoutService, public router: Router
   ) {
     this.bannerOption = [
       {

@@ -1,9 +1,10 @@
 <div *ngIf="isLoading" class="d-flex justify-content-center align-items-center flex-column overlay-progressBar">
-    <mat-progress-spinner
-        [color]="color"
-        [mode]="mode"
-        [value]="value">
-</mat-progress-spinner>
+    <div class="flex justify-content-center">
+        <p-progressSpinner 
+            styleClass="w-4rem h-4rem" 
+            strokeWidth="8" 
+            animationDuration=".5s" />
+    </div>
     <span class="sr-only sprinner-text">Loading...</span>
 </div>
 
