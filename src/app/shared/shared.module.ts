@@ -56,7 +56,7 @@ const imports = [
   DividerModule,
   ProgressSpinnerModule,
   RippleModule,
-  ToastModule
+  ToastModule,
 ];
 
 
