@@ -21,11 +21,11 @@ export class AdminGuard {
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot,
   ): boolean {
-    if (this.authService.isAdmin()) {
+    if (this.authService.userValue && this.authService.isAdmin()) {
       return true;
     } else {
-      this.toast.error('', 'You are not authorized to access this page');
-      this.router.navigate(['/']);
+      this.toast.showInfor('', 'You are not authorized to access this page');
+      this.router.navigate(['/'], {queryParams: {returnUrl: state.url}});
       return false;
     }
   }

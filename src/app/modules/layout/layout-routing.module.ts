@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LayoutComponent } from './layout.component';
+import { AuthGuardServiceGuard } from '@app/core/guards/auth-guard-service.guard';
 
 const routes: Routes = [
   {
@@ -26,6 +27,7 @@ const routes: Routes = [
         path: 'booking',
         loadChildren: () =>
           import('../booking/booking.module').then((m) => m.BookingModule),
+        canActivate: [AuthGuardServiceGuard],
       },
       {
         path: 'blog',

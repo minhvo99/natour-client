@@ -16,16 +16,17 @@ export class MenuComponent {
           {
               label: 'Home',
               items: [
-                  { label: 'Landing page', icon: 'pi pi-fw pi-home', routerLink: ['/'] }
+                  { label: 'Landing page', icon: 'pi pi-fw pi-home', routerLink: ['/'] },
+                  { label: 'Dashboard', icon: 'fa-solid fa-gauge', routerLink: ['/admin/'] }
               ]
           },
           {
               label: 'Tour managerment',
               items: [
-                  { label: 'Tours', icon: 'pi pi-fw pi-id-card', routerLink: ['/admin/tour-management'] },
-                  { label: 'Booking', icon: 'pi pi-fw pi-check-square', routerLink: ['/admin/booking-management'] },
-                  { label: 'Blog', icon: 'pi pi-fw pi-bookmark', routerLink: ['/admin/blog-management'] },
-                  { label: 'Users', icon: 'pi pi-fw pi-exclamation-circle', routerLink: ['/admin/user-management'] },
+                  { label: 'Tours', icon: 'fa-solid fa-plane', routerLink: ['/admin/tour-management'] },
+                  { label: 'Booking', icon: 'fa-solid fa-book-open-reader', routerLink: ['/admin/booking-management'] },
+                  { label: 'Blog', icon: 'fa-solid fa-blog', routerLink: ['/admin/blog-management'] },
+                  { label: 'Users', icon: 'pi pi-fw pi-users', routerLink: ['/admin/user-management'] },
               ]
           },
       ];

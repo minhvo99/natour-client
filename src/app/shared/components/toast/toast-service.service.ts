@@ -1,55 +1,73 @@
 import { Injectable } from '@angular/core';
-import { TOAST_STATE } from '@app/shared/modal/toast';
-import { MessageService } from 'primeng/api';
-import { BehaviorSubject } from 'rxjs';
-interface ToastMessage {
-  message: string;
-  type: 'success' | 'error' | 'info' | 'warning';
-}
-
-interface Severity {
-  severity: 'success' | 'info' | 'warn' | 'error';
-}
+import Swal from 'sweetalert2';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ToastService {
-  constructor(private messageService: MessageService) {}
+  constructor() {}
+
+  showInfor(summary: string, detail: string) {
+    Swal.fire({
+      icon: 'info',
+      title: summary,
+      text: detail,
+      toast: false,
+      showConfirmButton: false,
+      timer: 1500,
+      timerProgressBar: true,
+    });
+  }
 
   success(summary: string, detail: string) {
-    this.messageService.add({
-      severity: 'success',
-      summary: summary,
-      detail: detail,
+    Swal.fire({
+      icon: 'success',
+      title: summary,
+      text: detail,
+      toast: true,
+      position: 'top-end',
+      showConfirmButton: false,
+      timer: 1500,
+      timerProgressBar: true,
     });
   }
 
   error(summary: string, detail: string) {
-    this.messageService.add({
-      severity: 'error',
-      summary: summary,
-      detail: detail,
+    Swal.fire({
+      icon: 'error',
+      title: summary,
+      text: detail,
+      toast: true,
+      position: 'top-end',
+      showConfirmButton: false,
+      timer: 1500,
+      timerProgressBar: true,
     });
   }
 
   info(summary: string, detail: string) {
-    this.messageService.add({
-      severity: 'info',
-      summary: summary,
-      detail: detail,
+    Swal.fire({
+      icon: 'info',
+      title: summary,
+      text: detail,
+      toast: true,
+      position: 'top-end',
+      showConfirmButton: false,
+      timer: 1500,
+      timerProgressBar: true,
     });
   }
 
   warning(summary: string, detail: string) {
-    this.messageService.add({
-      severity: 'warn',
-      summary: summary,
-      detail: detail,
+    Swal.fire({
+      icon: 'warning',
+      title: summary,
+      text: detail,
+      toast: true,
+      position: 'top-end',
+      showConfirmButton: false,
+      timer: 1500,
+      timerProgressBar: true,
     });
-  }
-
-  clear() {
-    this.messageService.clear();
   }
 }
