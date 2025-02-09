@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Tour } from '@app/shared/modal/tour';
 import { environment } from '@env/environment';
-import { Observable } from 'rxjs';
+import { map, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -29,6 +29,8 @@ export class ManagementTourService {
   }
 
   getTourStast(): Observable<any> {
-    return this.http.get(`${this.baseUrl}/tour/tour-stast`);
+    return this.http
+      .get(`${this.baseUrl}/tour/tour-stast`)
+      .pipe(map((res: any) => res.data));
   }
 }

@@ -20,6 +20,36 @@ export class DashboardComponent implements OnInit, OnDestroy {
   ];
 
   tourStast!: any;
+  cols = [
+    {
+      id: '01',
+      label: 'Type',
+    },
+    {
+      id: '02',
+      label: 'Number of Tours',
+    },
+    {
+      id: '03',
+      label: 'Number of Ratings',
+    },
+    {
+      id: '04',
+      label: 'Min Price',
+    },
+    {
+      id: '05',
+      label: 'Max Price',
+    },
+    {
+      id: '06',
+      label: 'Average Price',
+    },
+    {
+      id: '07',
+      label: 'Average Rating',
+    },
+  ];
 
   constructor(
     private managementTourService: ManagementTourService,
@@ -40,7 +70,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
         catchError((err) => {
           this.isLoading = false;
           this.toast.error(TOAST_STATE.error, err.message);
-          return of([], [], [], []);
+          return of([], [], [], [], []);
         }),
       )
       .subscribe({

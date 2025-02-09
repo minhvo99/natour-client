@@ -26,7 +26,7 @@ import { RippleModule } from 'primeng/ripple';
 import { TopbarComponent } from './components/topbar/topbar.component';
 import { ConfirmDialogComponent } from './components/confirm-dialog/confirm-dialog.component';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
-import { ChartModule } from 'primeng/chart';
+import { TableModule } from 'primeng/table';
 
 const declarations = [
   HeaderComponent,
@@ -60,7 +60,7 @@ const imports = [
   RippleModule,
   ToastModule,
   ConfirmDialogModule,
-  ChartModule
+  TableModule
 ];
 
 @NgModule({
