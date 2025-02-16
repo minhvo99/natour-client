@@ -6,7 +6,7 @@
 />
 <p-sidebar [(visible)]="isOpenDialog" position="right">
   <h3>user infor</h3>
-  <p-avatar [style]="{'background-color': '#9c27b0', 'color': '#ffffff'}" [label]="getAvatar().firstChar" shape="circle"></p-avatar>
+  <p-avatar [style]="{'background-color': '#9c27b0', 'color': '#ffffff'}" [label]="getAvatar().firstChar" [image]="getAvatar().avatarUrl" shape="circle"></p-avatar>
     <p>Username: {{ userInfo?.name }}</p>
     <p>Email: {{ userInfo?.email }}</p>
     <p>Role: {{ userInfo?.role }}</p>

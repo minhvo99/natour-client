@@ -27,6 +27,7 @@ import { TopbarComponent } from './components/topbar/topbar.component';
 import { ConfirmDialogComponent } from './components/confirm-dialog/confirm-dialog.component';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { TableModule } from 'primeng/table';
+import { GoogleSigninButtonModule } from '@abacritt/angularx-social-login';
 
 const declarations = [
   HeaderComponent,
@@ -60,7 +61,8 @@ const imports = [
   RippleModule,
   ToastModule,
   ConfirmDialogModule,
-  TableModule
+  TableModule,
+  GoogleSigninButtonModule
 ];
 
 @NgModule({

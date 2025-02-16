@@ -80,6 +80,6 @@ export class HeaderComponent implements OnInit {
   logOut() {
     this.authService.logout();
     this.isLogin = false;
-    this.menus.slice(0, 4);
+    this.menus = this.menus.slice(0, 4);
   }
 }

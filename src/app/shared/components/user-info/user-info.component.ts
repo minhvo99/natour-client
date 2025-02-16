@@ -19,7 +19,7 @@ export class UserInfoComponent{
   }
 
   getAvatar() {
-    const firstChar = this.userInfo?.name?.charAt(0).toUpperCase() || 'U';
+    const firstChar = !this.userInfo?.photo ? this.userInfo?.name?.charAt(0).toUpperCase() : null;
     const avatarUrl = this.userInfo?.photo ? this.userInfo?.photo : null;
     return { firstChar, avatarUrl };
   }

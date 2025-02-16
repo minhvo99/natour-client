@@ -74,7 +74,7 @@ export class TourDetaiComponent implements OnInit {
   }
 
   getAvatar(user: any) {
-    const firstChar = user?.name?.charAt(0).toUpperCase() || 'U';
+    const firstChar = user?.photo? null : user?.name?.charAt(0).toUpperCase();
     const avatarUrl = user?.photo ? user?.photo : null;
     return { firstChar, avatarUrl };
   }

@@ -15,7 +15,8 @@
         [breakpoint]="'960px'"
         [tableStyle]="{ 'min-width': '50rem' }"
         [columns]="cols"
-        styleClass="p-datatable-gridlines"
+        styleClass="p-datatable-striped" 
+        [tableStyle]="{'min-width': '50rem'}"
       >
         <ng-template pTemplate="header" let-columns>
           <tr>

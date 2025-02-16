@@ -1,6 +1,7 @@
+import { SocialAuthService, SocialUser } from '@abacritt/angularx-social-login';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute, NavigationStart, Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from '@app/core/services/auth.service';
 import { Subject, takeUntil } from 'rxjs';
 
@@ -21,6 +22,7 @@ export class LoginComponent implements OnInit {
     private authService: AuthService,
     private router: Router,
     private route: ActivatedRoute,
+    private socialAuth: SocialAuthService
   ) {}
 
   ngOnInit(): void {
@@ -28,6 +30,18 @@ export class LoginComponent implements OnInit {
     this.formUser = this.formBuilder.group({
       email: ['', Validators.required],
       password: ['', Validators.required],
+    });
+    this.socialAuth.authState.subscribe((user: SocialUser) => {
+      if (user) {
+        this.authService.loginWithGoogle(user.idToken).subscribe({
+          next: () => {
+            this.router.navigateByUrl(this.returnUrl!);
+          },
+          error: (err) => {
+            this.loginError = err;
+          },
+        });
+      }
     });
   }
   ngOnDestroy(): void {
