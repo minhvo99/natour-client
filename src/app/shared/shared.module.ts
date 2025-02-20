@@ -28,6 +28,8 @@ import { ConfirmDialogComponent } from './components/confirm-dialog/confirm-dial
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { TableModule } from 'primeng/table';
 import { GoogleSigninButtonModule } from '@abacritt/angularx-social-login';
+import { TruncatePipe } from './pipes/truncate.pipe';
+import { TooltipModule } from 'primeng/tooltip';
 
 const declarations = [
   HeaderComponent,
@@ -39,6 +41,7 @@ const declarations = [
   FilterTourComponent,
   TopbarComponent,
   ConfirmDialogComponent,
+  TruncatePipe
 ];
 const imports = [
   CommonModule,
@@ -62,7 +65,8 @@ const imports = [
   ToastModule,
   ConfirmDialogModule,
   TableModule,
-  GoogleSigninButtonModule
+  GoogleSigninButtonModule,
+  TooltipModule
 ];
 
 @NgModule({

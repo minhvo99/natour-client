@@ -3,6 +3,7 @@ import { ManagementTourService } from '../../services/management-tour.service';
 import { catchError, combineLatest, of, Subject, takeUntil } from 'rxjs';
 import { ToastService } from '@app/shared/components/toast/toast-service.service';
 import { TOAST_STATE } from '@app/shared/modal/toast';
+import { DashboardStateService } from '../../services/dashboard-state.service';
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -54,9 +55,26 @@ export class DashboardComponent implements OnInit, OnDestroy {
   constructor(
     private managementTourService: ManagementTourService,
     private toast: ToastService,
+    private dashboardState: DashboardStateService,
   ) {}
 
   ngOnInit(): void {
+    const stateValues = Object.values(this.dashboardState.state());
+    const hasNull = stateValues.some((value) => !value);
+
+    if (!hasNull) {
+      const { tours, bookings, reviews, users } = this.dashboardState.state();
+      const values = [tours, bookings, reviews, users];
+      this.data.forEach((item, index) => {
+        item.value = values[index]?.total || 0;
+      });
+      this.tourStast = this.dashboardState.state().tourStast;
+      return;
+    }
+    this.inittialData();
+  }
+
+  inittialData() {
     this.isLoading = true;
     combineLatest([
       this.managementTourService.getAllTours(),
@@ -75,6 +93,13 @@ export class DashboardComponent implements OnInit, OnDestroy {
       )
       .subscribe({
         next: ([tours, bookings, reviews, users, tourStast]) => {
+          this.dashboardState.updateState({
+            tours,
+            bookings,
+            reviews,
+            users,
+            tourStast,
+          });
           this.tourStast = tourStast;
           const values = [tours, bookings, reviews, users];
           this.data.forEach(
